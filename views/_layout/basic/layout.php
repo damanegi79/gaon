@@ -83,7 +83,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
         <header class="header fixed clearfix">
 
             <div class="container">
-                <div class="row">
+                <div class="row" style="display:none">
                     <ul class="header-top-menu">
                         <?php if ($this->member->is_admin() === 'super') { ?>
                             <li><i class="fa fa-cog"></i><a href="<?php echo site_url(config_item('uri_segment_admin')); ?>" title="관리자 페이지로 이동">관리자</a></li>
@@ -244,54 +244,42 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
         <?php } ?>
     </div>
     <!-- main end -->
-
-    <!-- footer start -->
-    <footer>
-        <div class="container">
-            <div>
-                <ul class="company">
-                    <li><a href="<?php echo document_url('aboutus'); ?>" title="회사소개">회사소개</a></li>
-                    <li><a href="<?php echo document_url('provision'); ?>" title="이용약관">이용약관</a></li>
-                    <li><a href="<?php echo document_url('privacy'); ?>" title="개인정보 취급방침">개인정보 취급방침</a></li>
-                </ul>
+    <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
+    <!-- ================ -->
+    <footer id="footer" class="clearfix dark">
+        <!-- .subfooter start -->
+        <!-- ================ -->
+        <div class="subfooter">
+            <div class="container">
+                <div class="subfooter-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright text-center">
+                                <?php if ($this->cbconfig->item('company_address')) { ?>
+                                    <span><?php echo $this->cbconfig->item('company_address'); ?>
+                                        <?php if ($this->cbconfig->item('company_zipcode')) { ?>(우편 <?php echo $this->cbconfig->item('company_zipcode'); ?>)<?php } ?>
+                                    </span>
+                                <?php } ?>
+                                <?php if ($this->cbconfig->item('company_owner')) { ?><span><b>대표</b> <?php echo $this->cbconfig->item('company_owner'); ?></span><?php } ?>
+                                <?php if ($this->cbconfig->item('company_phone')) { ?><span><b>전화</b> <?php echo $this->cbconfig->item('company_phone'); ?></span><?php } ?>
+                                <?php if ($this->cbconfig->item('company_fax')) { ?><span><b>팩스</b> <?php echo $this->cbconfig->item('company_fax'); ?></span><?php } ?>
+                            </div>
+                            <div class="copyright text-center">
+                                <?php if ($this->cbconfig->item('company_reg_no')) { ?><span><b>사업자</b> <?php echo $this->cbconfig->item('company_reg_no'); ?></span><?php } ?>
+                                <?php if ($this->cbconfig->item('company_retail_sale_no')) { ?><span><b>통신판매</b> <?php echo $this->cbconfig->item('company_retail_sale_no'); ?></span><?php } ?>
+                                <?php if ($this->cbconfig->item('company_added_sale_no')) { ?><span><b>부가통신</b> <?php echo $this->cbconfig->item('company_added_sale_no'); ?></span><?php } ?>
+                                <?php if ($this->cbconfig->item('company_admin_name')) { ?><span><b>정보관리책임자명</b> <?php echo $this->cbconfig->item('company_admin_name'); ?></span><?php } ?>
+                                <span>Copyright&copy; <?php echo $this->cbconfig->item('site_title'); ?>. All Rights Reserved.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="copyright">
-                <?php if ($this->cbconfig->item('company_address')) { ?>
-                    <span><?php echo $this->cbconfig->item('company_address'); ?>
-                        <?php if ($this->cbconfig->item('company_zipcode')) { ?>(우편 <?php echo $this->cbconfig->item('company_zipcode'); ?>)<?php } ?>
-                    </span>
-                <?php } ?>
-                <?php if ($this->cbconfig->item('company_owner')) { ?><span><b>대표</b> <?php echo $this->cbconfig->item('company_owner'); ?></span><?php } ?>
-                <?php if ($this->cbconfig->item('company_phone')) { ?><span><b>전화</b> <?php echo $this->cbconfig->item('company_phone'); ?></span><?php } ?>
-                <?php if ($this->cbconfig->item('company_fax')) { ?><span><b>팩스</b> <?php echo $this->cbconfig->item('company_fax'); ?></span><?php } ?>
-            </div>
-            <div class="copyright">
-                <?php if ($this->cbconfig->item('company_reg_no')) { ?><span><b>사업자</b> <?php echo $this->cbconfig->item('company_reg_no'); ?></span><?php } ?>
-                <?php if ($this->cbconfig->item('company_retail_sale_no')) { ?><span><b>통신판매</b> <?php echo $this->cbconfig->item('company_retail_sale_no'); ?></span><?php } ?>
-                <?php if ($this->cbconfig->item('company_added_sale_no')) { ?><span><b>부가통신</b> <?php echo $this->cbconfig->item('company_added_sale_no'); ?></span><?php } ?>
-                <?php if ($this->cbconfig->item('company_admin_name')) { ?><span><b>정보관리책임자명</b> <?php echo $this->cbconfig->item('company_admin_name'); ?></span><?php } ?>
-                <span>Copyright&copy; <?php echo $this->cbconfig->item('site_title'); ?>. All Rights Reserved.</span>
-            </div>
-            <?php
-            if ($this->cbconfig->get_device_view_type() === 'mobile') {
-            ?>
-                <div class="see_mobile"><a href="<?php echo current_full_url(); ?>" class="btn btn-primary btn-xs viewpcversion">PC 버전으로 보기</a></div>
-            <?php
-            } else {
-                if ($this->cbconfig->get_device_type() === 'mobile') {
-            ?>
-                <div class="see_mobile"><a href="<?php echo current_full_url(); ?>" class="btn btn-primary btn-lg viewmobileversion" style="width:100%;font-size:5em;">모바일 버전으로 보기</a></div>
-            <?php
-                } else {
-            ?>
-                <div class="see_mobile"><a href="<?php echo current_full_url(); ?>" class="btn btn-primary btn-xs viewmobileversion">모바일 버전으로 보기</a></div>
-            <?php
-                }
-            }
-            ?>
         </div>
+        <!-- .subfooter end -->
     </footer>
     <!-- footer end -->
+    
 </div>
 
 

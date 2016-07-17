@@ -17,7 +17,7 @@
                     <li data-transition="random-static" data-slotamount="7" data-masterspeed="500" data-saveperformance="on" data-title="Powerful Bootstrap Template">
 
                     <!-- main image -->
-                    <img src="<?php echo element('layout_skin_url', $layout); ?>/images/slider-fullscreen-slide-1.jpg" alt="slidebg1" data-bgposition="center top"  data-bgrepeat="no-repeat" data-bgfit="cover">
+                    <img src="<?php echo element('layout_skin_url', $layout); ?>/images/main_01_01.jpg" alt="slidebg1" data-bgposition="center top"  data-bgrepeat="no-repeat" data-bgfit="cover">
 
                     <!-- Transparent Background -->
                     <div class="tp-caption dark-translucent-bg"
@@ -154,7 +154,7 @@
                     <li data-transition="random-static" data-slotamount="7" data-masterspeed="500" data-saveperformance="on" data-title="Premium HTML5 Bootstrap Theme">
 
                     <!-- main image -->
-                    <img src="<?php echo element('layout_skin_url', $layout); ?>/images/slider-fullscreen-slide-2.jpg" alt="slidebg2" data-bgposition="center top"  data-bgrepeat="no-repeat" data-bgfit="cover">
+                    <img src="<?php echo element('layout_skin_url', $layout); ?>/images/main_01_02.jpg" alt="slidebg2" data-bgposition="center top"  data-bgrepeat="no-repeat" data-bgfit="cover">
 
                     <!-- Transparent Background -->
                     <div class="tp-caption dark-translucent-bg"
@@ -237,3 +237,143 @@
 
 </div>
 <!-- banner end -->
+
+<!-- section start -->
+<!-- ================ -->
+<section class="section clearfix">
+    <div class="container">
+        <h2 class="logo-font text-center text-muted">Featured Dishes</h2>
+        <div class="separator"></div>
+        <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam tempore <br> molestiae cum, id ab consectetur aperiam recusandae fugit, quis, possimus eum.</p>
+
+        <!-- Tab panes -->
+        <div class="tab-content clear-style">
+            <div class="tab-pane active">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="image-box text-center style-2 mb-20">
+                            <img src="<?php echo element('layout_skin_url', $layout); ?>/images/restaurant-dish-1.jpg" alt="" class="img-circle img-thumbnail">
+                            <div class="body padding-horizontal-clear">
+                                <h4 class="logo-font title">Explicabo sed sequi recusandae</h4>
+                                <p class="small mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus.</p>
+                                <p class="lead text-default">$9.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="image-box text-center style-2 mb-20">
+                            <img src="<?php echo element('layout_skin_url', $layout); ?>/images/restaurant-dish-2.jpg" alt="" class="img-circle img-thumbnail">
+                            <div class="body padding-horizontal-clear">
+                                <h4 class="logo-font title">Aliquam atque ipsam nihil</h4>
+                                <p class="small mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus.</p>
+                                <p class="lead text-default">$5.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="image-box text-center style-2 mb-20">
+                            <img src="<?php echo element('layout_skin_url', $layout); ?>/images/restaurant-dish-3.jpg" alt="" class="img-circle img-thumbnail">
+                            <div class="body padding-horizontal-clear">
+                                <h4 class="logo-font title">Nihil adipisci rem minus</h4>
+                                <p class="small mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus.</p>
+                                <p class="lead text-default">$6.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="image-box text-center style-2 mb-20">
+                            <img src="<?php echo element('layout_skin_url', $layout); ?>/images/restaurant-dish-4.jpg" alt="" class="img-circle img-thumbnail">
+                            <div class="body padding-horizontal-clear">
+                                <h4 class="logo-font title">Adipisicing elit aliquam atque</h4>
+                                <p class="small mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus.</p>
+                                <p class="lead text-default">$8.99</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- pills end -->
+    </div>
+</section>
+<!-- section end -->
+
+<!-- section -->
+<!-- ================ -->
+<section class="pv-30 parallax light-translucent-bg background-img-7">
+    <div class="space-bottom">
+        <div class="owl-carousel content-slider">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="testimonial text-center">
+                            <div class="testimonial-image">
+                                <img src="<?php echo element('layout_skin_url', $layout); ?>/images/testimonial-1.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
+                            </div>
+                            <h3>Just Perfect!</h3>
+                            <div class="separator"></div>
+                            <div class="testimonial-body">
+                                <blockquote>
+                                    <p>Sed ut perspiciatis unde omnis iste natu error sit voluptatem accusan tium dolore laud antium, totam rem dolor sit amet tristique pulvinar, turpis arcu rutrum nunc, ac laoreet turpis augue a justo.</p>
+                                </blockquote>
+                                <div class="testimonial-info-1">- Jane Doe</div>
+                                <div class="testimonial-info-2">By Company</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="testimonial text-center">
+                            <div class="testimonial-image">
+                                <img src="<?php echo element('layout_skin_url', $layout); ?>/images/testimonial-2.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
+                            </div>
+                            <h3>Amazing!</h3>
+                            <div class="separator"></div>
+                            <div class="testimonial-body">
+                                <blockquote>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et cupiditate deleniti ratione in. Expedita nemo, quisquam, fuga adipisci omnis ad mollitia libero culpa nostrum est quia eos esse vel!</p>
+                                </blockquote>
+                                <div class="testimonial-info-1">- Jane Doe</div>
+                                <div class="testimonial-info-2">By Company</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="clients-container">
+                <div class="clients">
+                    <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="100">
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-1.png" alt=""></a>
+                    </div>
+                    <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="200">
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-2.png" alt=""></a>
+                    </div>
+                    <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="300">
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-3.png" alt=""></a>
+                    </div>
+                    <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="400">
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-4.png" alt=""></a>
+                    </div>
+                    <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="500">
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-5.png" alt=""></a>
+                    </div>
+                    <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="600">
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-6.png" alt=""></a>
+                    </div>
+                    <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="700">
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-7.png" alt=""></a>
+                    </div>
+                    <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="800">
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-8.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- section end -->

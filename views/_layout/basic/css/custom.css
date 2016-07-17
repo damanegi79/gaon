@@ -12,3 +12,7 @@ File Description: Place here your custom CSS styles
 
 
 .logo img{max-height:55px}
+.header-top-menu{overflow:hidden;float:right;margin:0;padding-top:10px;padding-right:25px}
+.header-top-menu > li{float:left;padding:0 5px;text-decoration:none;font-size:12px}
+.header-top-menu > li a{color:#777}
+.header-top-menu > li i{margin-right:5px}
