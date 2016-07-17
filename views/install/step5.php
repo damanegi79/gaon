@@ -43,10 +43,10 @@ echo form_open(site_url('install/step5'), $attributes);
         <label class="col-sm-3 control-label"><i class="glyphicon glyphicon-star"></i> 스킨설정</label>
         <div class="col-sm-9">
             <label class="radio-inline" for="skin_bootstrap">
-                <input type="radio" name="skin" id="skin_bootstrap" value="bootstrap" checked="checked" /> Bootstrap Theme
+                <input type="radio" name="skin" id="skin_bootstrap" value="bootstrap" /> Bootstrap Theme
             </label>
             <label class="radio-inline" for="skin_basic">
-                <input type="radio" name="skin" id="skin_basic" value="basic" /> Basic Theme
+                <input type="radio" name="skin" id="skin_basic" value="basic" checked="checked" /> Basic Theme
             </label>
         </div>
     </div>

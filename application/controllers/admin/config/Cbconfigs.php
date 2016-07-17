@@ -209,7 +209,6 @@ class Cbconfigs extends CB_Controller
             $this->Config_model->save($savedata);
             $view['view']['alert_message'] = '기본정보 설정이 저장되었습니다';
         }
-
         $getdata = $this->Config_model->get_all_meta();
         $view['view']['data'] = $getdata;
 
@@ -224,6 +223,48 @@ class Cbconfigs extends CB_Controller
         $this->data = $view;
         $this->layout = element('layout_skin_file', element('layout', $view));
         $this->view = element('view_skin_file', element('layout', $view));
+    }
+
+    /**
+     * 이미지 업로드 기능 추가
+     */
+    public function uploadimg()
+    {
+        $this->load->library('upload');
+
+        $file_error = '';
+
+        if (isset($_FILES) && isset($_FILES['site_logo_img']) && isset($_FILES['site_logo_img']['name']) && $_FILES['site_logo_img']['name']) 
+        {
+            $upload_path = config_item('uploads_dir') . '/site/';
+            if (is_dir($upload_path) === false) 
+            {
+                mkdir($upload_path, 0707);
+                $file = $upload_path . 'index.php';
+                $f = @fopen($file, 'w');
+                @fwrite($f, '');
+                @fclose($f);
+                @chmod($file, 0644);
+            }
+            $uploadconfig = '';
+            $uploadconfig['upload_path'] = $upload_path;
+            $uploadconfig['allowed_types'] = 'jpg|png|gif';
+            $uploadconfig['max_width'] = '1024';
+            $uploadconfig['max_height'] = '1024';
+            $uploadconfig['encrypt_name'] = true;
+
+            $this->upload->initialize($uploadconfig);
+            if ($this->upload->do_upload('site_logo_img'))
+            {
+                $img = $this->upload->data();
+                echo $this->config->site_url() . $upload_path . $img['file_name'];
+            } 
+            else 
+            {
+                echo "error " . $this->upload->display_errors('', '');
+            }
+            
+        }
     }
 
     /**

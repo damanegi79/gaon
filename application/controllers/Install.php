@@ -3293,7 +3293,7 @@ class Install extends CI_Controller
 
         $configdata = array(
             'site_title' => '홈페이지',
-            'site_logo' => '홈페이지',
+            'site_logo' => '/assets/images/logo.gif',
             'admin_logo' => 'Admin',
             'webmaster_name' => '관리자',
             'webmaster_email' => 'noreply@domain.com',

@@ -28,7 +28,11 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">홈페이지 로고</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="site_logo" value="<?php echo set_value('site_logo', element('site_logo', element('data', $view))); ?>" />
+                        <?php if(element('site_logo', element('data', $view))) : ?>
+                            <img src="<?php echo set_value('site_logo', element('site_logo', element('data', $view))); ?>" style="height:50px;width:auto;margin-right:10px" />
+                        <?php endif; ?>
+                        <input type="file" name="site_logo_img" id="site_logo_img" style="display:inline-block" />
+                        <input type="hidden" class="form-control" id="site_logo" name="site_logo" value="<?php echo set_value('site_logo', element('site_logo', element('data', $view))); ?>" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -184,11 +188,15 @@
                     </div>
                 </div>
                 <div class="btn-group pull-right" role="group" aria-label="...">
-                    <button type="submit" class="btn btn-success btn-sm">저장하기</button>
+                    <button id="save-btn" type="button" class="btn btn-success btn-sm">저장하기</button>
                 </div>
             </div>
         <?php echo form_close(); ?>
+        <form action="<?php echo current_full_url().'/uploadimg'; ?>" name="logowrite" id="logowrite" enctype="multipart/form-data" method="post" accept-charset="utf-8" style="display:none">
+            <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
+        </form>
     </div>
+    
 </div>
 
 <script type="text/javascript">
@@ -197,7 +205,7 @@ $(function() {
     $('#fadminwrite').validate({
         rules: {
             site_title: {required :true},
-            site_logo: {required :true},
+            //site_logo: {required :true},
             admin_logo: {required :true},
             webmaster_name: {required :true},
             webmaster_email: {required :true, email : true },
@@ -207,7 +215,45 @@ $(function() {
             list_count: {required :true, number : true, min:0 }
         }
     });
+
+    $("#save-btn").bind("click", function ( e )
+    {
+        if( $("#site_logo_img").val() )
+        {
+            var container = $("#site_logo_img").parent();
+            $("#logowrite").append($("#site_logo_img"));
+            container.append('<input type="file" name="site_logo_img" id="site_logo_img" />');
+            $("#logowrite").ajaxForm({success:function ( data )
+            {
+                if(data.indexOf("error") != -1)
+                {
+                    alert("이미지 업로드 실패 ! "+data.split("error ")[1]);
+                }
+                else
+                {
+                    $("#site_logo").val(data);
+                    $("#fadminwrite").submit();
+                }
+
+                $("#logowrite").find("#site_logo_img").remove();
+            },
+            error : function ()
+            {
+                alert("이미지 업로드 실패 !");
+            }}).submit();
+            
+        }
+        else
+        {
+            if( $("#site_logo").val())
+            {
+                $("#fadminwrite").submit();
+            }
+        }
+    });
+
 });
+
 
 var form_original_data = $('#fadminwrite').serialize();
 function check_form_changed() {
