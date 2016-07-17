@@ -226,25 +226,22 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 
     <!-- main start -->
     <div class="main">
-        <div class="container">
-            <?php if (element('use_sidebar', $layout)) {?>
-                <div class="left">
-            <?php } ?>
+        <?php if (element('use_sidebar', $layout)) {?>
+            <div class="left">
+        <?php } ?>
 
-            <!-- 본문 시작 -->
-            <?php if (isset($yield))echo $yield; ?>
-            <!-- 본문 끝 -->
+        <!-- 본문 시작 -->
+        <?php if (isset($yield))echo $yield; ?>
+        <!-- 본문 끝 -->
 
-            <?php if (element('use_sidebar', $layout)) {?>
+        <?php if (element('use_sidebar', $layout)) {?>
 
-                </div>
-                <div class="sidebar">
-                    <?php $this->load->view(element('layout_skin_path', $layout) . '/sidebar'); ?>
-                </div>
+            </div>
+            <div class="sidebar">
+                <?php $this->load->view(element('layout_skin_path', $layout) . '/sidebar'); ?>
+            </div>
 
-            <?php } ?>
-
-        </div>
+        <?php } ?>
     </div>
     <!-- main end -->
 
