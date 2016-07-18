@@ -70,6 +70,7 @@ class Board_post extends CB_Controller
 
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);
+        
 
         /**
          * 레이아웃을 정의합니다
@@ -419,8 +420,7 @@ class Board_post extends CB_Controller
             $filewhere = array(
                 'post_id' => $post_id,
             );
-            $view['view']['file'] = $file = $this->Post_file_model
-                ->get('', '', $filewhere, '', '', 'pfi_id', 'ASC');
+            $view['view']['file'] = $file = $this->Post_file_model->get('', '', $filewhere, '', '', 'pfi_id', 'ASC');
             $view['view']['file_download'] = array();
             $view['view']['file_image'] = array();
 
@@ -1066,11 +1066,40 @@ class Board_post extends CB_Controller
         if (empty($category_id) OR $category_id < 1) {
             $category_id = '';
         }
-        $result = $this->Post_model
-            ->get_post_list($per_page, $offset, $where, $category_id, $findex, $sfield, $skeyword);
+        $result = $this->Post_model->get_post_list($per_page, $offset, $where, $category_id, $findex, $sfield, $skeyword);
+
+       
+
         $list_num = $result['total_rows'] - ($page - 1) * $per_page;
         if (element('list', $result)) {
             foreach (element('list', $result) as $key => $val) {
+
+
+                // 첨부파일 이미지 추가
+                if( $result['list'][$key]['post_image'] )
+                {
+                    $this->load->model('Post_file_model');
+                    $filewhere = array('post_id' => $result['list'][$key]['post_id']);
+                    $file = $this->Post_file_model->get('', '', $filewhere, '', '', 'pfi_id', 'ASC');
+                    
+                    if ($file && is_array($file)) 
+                    {
+                        foreach ($file as $value) 
+                        {
+                            if (element('pfi_is_image', $value)) 
+                            {
+                                $value['origin_image_url'] = site_url(config_item('uploads_dir') . '/post/' . element('pfi_filename', $value));
+                                $value['thumb_image_url'] = thumb_url('post', element('pfi_filename', $value), $image_width);
+                            }
+                            $result['list'][$key]['file_image'][] = $value;
+                        }
+                        
+                    }
+                    $result['list'][$key]['file_image_count'] = count($result['list'][$key]['file_image']);
+                }
+                // 첨부파일 이미지 추가
+                
+
                 $result['list'][$key]['post_url'] = post_url(element('brd_key', $board), element('post_id', $val));
 
                 $result['list'][$key]['meta'] = $meta

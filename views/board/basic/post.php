@@ -19,7 +19,6 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
 <?php } ?>
 
 <?php echo element('headercontent', element('board', $view)); ?>
-
 <div class="board">
     <?php echo show_alert_message($this->session->flashdata('message'), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>'); ?>
     <h3>
