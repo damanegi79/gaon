@@ -68,7 +68,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 <div class="scrollToTop circle"><i class="icon-up-open-big"></i></div>
 <!-- //scrollToTop -->
 
-<div class="page-wrapper">    
+<div class="page-wrapper">
 
 
     <!-- header-container start -->
@@ -198,7 +198,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 
 
 
-                                                
+
                                             </ul>
                                         </div>
 
@@ -220,9 +220,9 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
     </div>
     <!-- header-container end -->
 
-    
 
-    
+
+
 
     <!-- main start -->
     <div class="main">
@@ -247,6 +247,111 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
     <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
     <!-- ================ -->
     <footer id="footer" class="clearfix dark">
+
+        <div class="footer">
+            <div class="container">
+                <div class="footer-inner">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="footer-content">
+                                <div class="logo-footer"><img id="logo-footer" src="images/img_logo.png" alt=""></div>
+                                <p>㈜가온앤은 ‘세상의 중심’ 그리고 and, 세상의 중심에서 무한한 발전을 실현 하고자 합니다. <br>
+                                    생명의 시작부터 노년기까지,인류의 건강한 삶을  위하여 열심히 달리겠습니다.</p>
+                                <div class="separator-2"></div>
+                                <nav>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a target="_blank" href="http://htmlcoder.me/support">GAONN</a></li>
+                                        <li><a href="#">LABOVO</a></li>
+                                        <li><a href="#">PRODUCT</a></li>
+                                        <li><a href="page-about.html">NOTICE</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="footer-content">
+                                <h2 class="title">Latest News</h2>
+                                <div class="separator-2"></div>
+                                <div class="media margin-clear">
+                                    <div class="media-left">
+                                        <div class="overlay-container">
+                                            <img class="media-object" src="images/blog-thumb-1.jpg" alt="blog-thumb">
+                                            <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading"><a href="blog-post.html">Lorem ipsum dolor sit amet...</a></h6>
+                                        <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 23, 2016</p>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="media margin-clear">
+                                    <div class="media-left">
+                                        <div class="overlay-container">
+                                            <img class="media-object" src="images/blog-thumb-2.jpg" alt="blog-thumb">
+                                            <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading"><a href="blog-post.html">Lorem ipsum dolor sit amet...</a></h6>
+                                        <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 22, 2016</p>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="media margin-clear">
+                                    <div class="media-left">
+                                        <div class="overlay-container">
+                                            <img class="media-object" src="images/blog-thumb-3.jpg" alt="blog-thumb">
+                                            <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading"><a href="blog-post.html">Lorem ipsum dolor sit amet...</a></h6>
+                                        <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 21, 2016</p>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="media margin-clear">
+                                    <div class="media-left">
+                                        <div class="overlay-container">
+                                            <img class="media-object" src="images/blog-thumb-4.jpg" alt="blog-thumb">
+                                            <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading"><a href="blog-post.html">Lorem ipsum dolor sit amet...</a></h6>
+                                        <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 21, 2016</p>
+                                    </div>
+                                </div>
+                                <div class="text-right space-top">
+                                    <a href="blog-large-image-right-sidebar.html" class="link-dark"><i class="fa fa-plus-circle pl-5 pr-5"></i>More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="footer-content">
+                                <h2 class="title">Contact Us</h2>
+                                <div class="separator-2"></div>
+                                <p>서울특별시 강남구 봉은사로 129, <br> 논현동 거평타운 B1 102호</p>
+                                <ul class="social-links circle animated-effect-1">
+                                    <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                    <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+                                    <li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
+                                    <li class="xing"><a target="_blank" href="http://www.xing.com"><i class="fa fa-xing"></i></a></li>
+                                </ul>
+                                <div class="separator-2"></div>
+                                <ul class="list-icons">
+                                    <li><i class="fa fa-phone pr-10 text-default"></i> 02.3444.1958</li>
+                                    <li><i class="fa fa-fax pr-10 text-default"></i> 02.780.8808</li>
+                                    <li><a href="mailto:korea@gaonn.net"><i class="fa fa-envelope-o pr-10"></i>korea@gaonn.net</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- .subfooter start -->
         <!-- ================ -->
         <div class="subfooter">
@@ -254,23 +359,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                 <div class="subfooter-inner">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="copyright text-center">
-                                <?php if ($this->cbconfig->item('company_address')) { ?>
-                                    <span><?php echo $this->cbconfig->item('company_address'); ?>
-                                        <?php if ($this->cbconfig->item('company_zipcode')) { ?>(우편 <?php echo $this->cbconfig->item('company_zipcode'); ?>)<?php } ?>
-                                    </span>
-                                <?php } ?>
-                                <?php if ($this->cbconfig->item('company_owner')) { ?><span><b>대표</b> <?php echo $this->cbconfig->item('company_owner'); ?></span><?php } ?>
-                                <?php if ($this->cbconfig->item('company_phone')) { ?><span><b>전화</b> <?php echo $this->cbconfig->item('company_phone'); ?></span><?php } ?>
-                                <?php if ($this->cbconfig->item('company_fax')) { ?><span><b>팩스</b> <?php echo $this->cbconfig->item('company_fax'); ?></span><?php } ?>
-                            </div>
-                            <div class="copyright text-center">
-                                <?php if ($this->cbconfig->item('company_reg_no')) { ?><span><b>사업자</b> <?php echo $this->cbconfig->item('company_reg_no'); ?></span><?php } ?>
-                                <?php if ($this->cbconfig->item('company_retail_sale_no')) { ?><span><b>통신판매</b> <?php echo $this->cbconfig->item('company_retail_sale_no'); ?></span><?php } ?>
-                                <?php if ($this->cbconfig->item('company_added_sale_no')) { ?><span><b>부가통신</b> <?php echo $this->cbconfig->item('company_added_sale_no'); ?></span><?php } ?>
-                                <?php if ($this->cbconfig->item('company_admin_name')) { ?><span><b>정보관리책임자명</b> <?php echo $this->cbconfig->item('company_admin_name'); ?></span><?php } ?>
-                                <span>Copyright&copy; <?php echo $this->cbconfig->item('site_title'); ?>. All Rights Reserved.</span>
-                            </div>
+                            <p class="text-center">© 2016 <a href="#">GAONN</a> Co. Ltd. All Rights Reserved</p>
                         </div>
                     </div>
                 </div>
@@ -279,7 +368,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
         <!-- .subfooter end -->
     </footer>
     <!-- footer end -->
-    
+
 </div>
 
 

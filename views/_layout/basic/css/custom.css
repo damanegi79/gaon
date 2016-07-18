@@ -8,11 +8,16 @@ License URI:http://support.wrapbootstrap.com/
 File Description: Place here your custom CSS styles
 */
 
-/*.navbar-nav{float: right;}*/
+
+@font-face {
+    font-family: 'Nanum Gothic';
+    src: url("/fonts/font/NanumGothic.eot");
+    src: url("/fonts/font/NanumGothic.eot?#iefix") format("embedded-opentype"),
+        url("/fonts/font/NanumGothic.woff") format("woff"),
+        url("/fonts/font/NanumGothic.ttf") format("truetype"),
+        url("/fonts/font/NanumGothic.svg#NanumGothic") format("svg");
+    font-weight: normal; font-style: normal; }
 
 
-.logo img{max-height:55px}
-.header-top-menu{overflow:hidden;float:right;margin:0;padding-top:10px;padding-right:25px}
-.header-top-menu > li{float:left;padding:0 5px;text-decoration:none;font-size:12px}
-.header-top-menu > li a{color:#777}
-.header-top-menu > li i{margin-right:5px}
+html, body {color:#666; font:14p 'Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic; min-width:320px;}
+h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{}
