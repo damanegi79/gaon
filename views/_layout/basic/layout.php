@@ -43,6 +43,11 @@
 <link rel="stylesheet" type="text/css" href="<?php echo element('layout_skin_url', $layout); ?>/css/custom.css">
 <?php echo $this->managelayout->display_css(); ?>
 
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+
 <script type="text/javascript">
 // 자바스크립트에서 사용하는 전역변수 선언
 var cb_url = "<?php echo trim(site_url(), '/'); ?>";
@@ -372,9 +377,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 </div>
 
 
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+
 <script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/plugins/modernizr.js"></script>
 <script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
@@ -390,7 +393,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 <script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/plugins/SmoothScroll.js"></script>
 <script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/js/template.js"></script>
 <script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/js/custom.js"></script>
-<!--<script type="text/javascript" src="<?php echo base_url('assets/js/common.js'); ?>"></script>-->
+<script type="text/javascript" src="<?php echo base_url('assets/js/common.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.extension.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/sideview.js'); ?>"></script>

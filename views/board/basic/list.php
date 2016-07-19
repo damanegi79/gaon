@@ -2,15 +2,35 @@
 
 <?php echo element('headercontent', element('board', element('list', $view))); ?>
 <?php
-//print_r(element('list', element('data', element('list', $view))));
+print_r($layout);
+print_r($view);
 ?>
-<div class="container">
-    <h1 class="text-center"><?php echo html_escape(element('board_name', element('board', element('list', $view)))); ?></h1>
 
+<div class="banner dark-translucent-bg" style="background-image:url('http://dev.gaon.co.kr/views/_layout/basic/images/page-about-banner-1.jpg'); background-position: 50% 27%;">
+    <!-- breadcrumb start -->
+    <!-- ================ -->
+    <div class="breadcrumb-container">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home pr-10"></i><a class="link-dark" href="<?php echo site_url(); ?>">Home</a></li>
+                <li class="active">Page About</li>
+            </ol>
+        </div>
+    </div>
+    <!-- breadcrumb end -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 text-center col-md-offset-2 pv-20">
+                <h1 class="title logo-font object-non-visible animated object-visible fadeIn" data-animation-effect="fadeIn" data-effect-delay="100"><?php echo html_escape(element('board_name', element('board', element('list', $view)))); ?></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
     <div class="board">
         
-
-<!--
         <div class="table-top">
             <?php if ( ! element('access_list', element('board', element('list', $view))) && element('use_rss_feed', element('board', element('list', $view)))) { ?>
                 <a href="<?php echo rss_url(element('brd_key', element('board', element('list', $view)))); ?>" class="btn btn-default btn-sm" title="<?php echo html_escape(element('board_name', element('board', element('list', $view)))); ?> RSS 보기"><i class="fa fa-rss"></i></a>
@@ -124,7 +144,6 @@
                 ?>
             </ul>
         <?php } ?>
--->
         <?php
         $attributes = array('name' => 'fboardlist', 'id' => 'fboardlist');
         echo form_open('', $attributes);
@@ -135,14 +154,6 @@
                 <?php foreach (element('list', element('data', element('list', $view))) as $result) : ?>
 
                     <article class="blogpost">
-                        <?php if(element('file_image', $result)): ?>
-                        
-                        <div class="overlay-container">
-                            <img src="<?php echo element('thumb_image_url', element('file_image', $result)[0]); ?>" alt="4660172d716e7c29feaa7657601cd6df.jpg" title="4660172d716e7c29feaa7657601cd6df.jpg" class="view_full_image" data-origin-image-url="http://dev.gaon.co.kr/uploads/post/2016/07/e177e310d0d805ce8b725b9f12c019a5.jpg" style="max-width:100%;">
-                            <a class="overlay-link" href="<?php echo element('post_url', $result); ?>"><i class="fa fa-link"></i></a>
-                        </div>
-                        <?php endif; ?>
-
                         <header>
                             <h2><a href="<?php echo element('post_url', $result); ?>"><?php echo html_escape(element('title', $result)); ?></a></h2>
                             <div class="post-info">
@@ -155,7 +166,7 @@
                             </div>
                         </header>
                         <div class="blogpost-content">
-                            <p><?php echo mb_strimwidth(element('post_content', $result), 0, 280, '...', 'utf-8'); ?></p>
+                            <p><?php echo mb_strimwidth(strip_tags(element('post_content', $result)), 0, 280, '...', 'utf-8'); ?></p>
                         </div>
                         <footer class="clearfix">
                             <!--<div class="link pull-left"><i class="icon-link"></i><a href="<?php echo element('post_url', $result); ?>">더보기</a></div>-->

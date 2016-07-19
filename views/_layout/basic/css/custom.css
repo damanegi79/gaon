@@ -23,3 +23,4 @@ html, body {color:#666; font:14p 'Nanum Gothic','dotum','Gulim',sans-serif,Arial
 h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{}
 
 .board{max-width:920px;margin:0 auto}
+.board .blogpost{margin-bottom:0}

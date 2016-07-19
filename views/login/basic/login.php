@@ -1,5 +1,59 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
+
+<div class="main-container dark-translucent-bg" style="background-image:url('<?php echo element('layout_skin_url', $layout); ?>/images/background-img-6.jpg');">
+    
+    <div class="container">
+        <div class="row">
+            <!-- main start -->
+            <!-- ================ -->
+            <div class="main object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
+                <div class="form-block center-block p-30 light-gray-bg border-clear">
+                    <h2 class="title">로그인</h2>
+                    <?php
+                        echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
+                        echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
+                        echo show_alert_message($this->session->flashdata('message'), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
+                        $attributes = array('class' => 'form-horizontal', 'name' => 'flogin', 'id' => 'flogin');
+                        echo form_open(current_full_url(), $attributes);
+                    ?>
+                        <div class="form-group has-feedback">
+                            <label for="inputUserName" class="col-sm-3 control-label"><?php echo element('userid_label_text', $view);?></label>
+                            <div class="col-sm-8">
+                                <input type="text" id="inputUserName" name="mem_userid" class="form-control" value="<?php echo set_value('mem_userid'); ?>" accesskey="L" />
+                                <i class="fa fa-user form-control-feedback"></i>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="inputPassword" class="col-sm-3 control-label">비밀번호</label>
+                            <div class="col-sm-8">
+                                <input type="password" name="mem_password" class="form-control" id="inputPassword">
+                                <i class="fa fa-lock form-control-feedback"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-8">                                											
+                                <button type="submit" class="btn btn-group btn-default btn-animated">로그인 <i class="fa fa-user"></i></button>
+                                <div class="checkbox" style="display:inline-block;margin-left:10px;vertical-align:top;position:relative;top:10px">
+                                    <label for="autologin">
+                                        <input type="checkbox" name="autologin" id="autologin" value="1" /> 자동로그인
+                                    </label>
+                                </div>
+                                <ul class="space-top">
+                                    <!--<li><a href="<?php echo site_url('register'); ?>">회원가입</a></li>-->
+                                    <li><a href="<?php echo site_url('findaccount'); ?>">아이디 / 비밀번호를 잃어 버렸습니까?</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php echo form_close(); ?>
+                </div>
+            </div>
+            <!-- main end -->
+        </div>
+    </div>
+    
+</div>
+<!--
 <div class="access">
     <div class="table-box">
         <div class="table-heading">로그인</div>
@@ -40,7 +94,7 @@
         </div>
     </div>
 </div>
-
+-->
 <script type="text/javascript">
 //<![CDATA[
 $(function() {
