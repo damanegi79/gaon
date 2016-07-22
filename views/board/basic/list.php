@@ -2,8 +2,8 @@
 
 <?php echo element('headercontent', element('board', element('list', $view))); ?>
 <?php
-print_r($layout);
-print_r($view);
+//print_r($layout);
+//print_r($view);
 ?>
 
 <div class="banner dark-translucent-bg" style="background-image:url('http://dev.gaon.co.kr/views/_layout/basic/images/page-about-banner-1.jpg'); background-position: 50% 27%;">
@@ -13,7 +13,7 @@ print_r($view);
         <div class="container">
             <ol class="breadcrumb">
                 <li><i class="fa fa-home pr-10"></i><a class="link-dark" href="<?php echo site_url(); ?>">Home</a></li>
-                <li class="active">Page About</li>
+                <?php echo get_location_menu(element('menu', $layout)) ?>                
             </ol>
         </div>
     </div>

@@ -1356,3 +1356,62 @@ if ( ! function_exists('check_cache_dir')) {
         return true;
     }
 }
+
+/**
+ * location 메뉴
+ */
+ 
+ 
+if ( ! function_exists('get_location_menu')) {
+    function get_location_menu( $menus )
+    {
+        find_location_menu($menus);
+    }
+}
+
+if ( ! function_exists('find_location_menu')) {
+    function find_location_menu( $menus, $menu = null, $id = "")
+    {
+        if($menu === null) $menu = $menus;
+
+        foreach($menu as $key => $result)
+        {
+            if($id === "")
+            {
+                if(is_array($result))
+                {
+                    find_location_menu($menus, $result, "");
+                }
+                else 
+                {
+                    if($key === "men_link" && $result === current_url())
+                    {
+                        if($menu['men_parent'] > 0)
+                        {
+                            find_location_menu($menus[0], null, $menu['men_parent']);
+                        }
+                        echo '<li class="active">'.$menu['men_name'].'</li>';
+                    }
+                    
+                }
+            }
+            else
+            {
+                if(is_array($result))
+                {
+                    find_location_menu($menu, $result, $id);
+                }
+                else 
+                {
+                    if($key === 'men_id' && $result === $id )
+                    {
+                        echo '<li class="active"><a class="link-dark" href="'.$menu['men_link'].'">'.$menu['men_name'].'</a></li>';
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+
