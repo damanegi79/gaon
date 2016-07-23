@@ -122,7 +122,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                         <div class="header-left clearfix">
                             <!-- logo -->
                             <div id="logo" class="logo">
-                                <a href="<?php echo site_url(); ?>" title="<?php echo html_escape($this->cbconfig->item('site_title'));?>"><img src="<?php echo $this->cbconfig->item('site_logo'); ?>" /></a>
+                                <a href="<?php echo site_url(); ?>" title="<?php echo html_escape($this->cbconfig->item('site_title'));?>"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/img_logo.png" /></a>
                             </div>
                         </div>
                         <!-- header-left end -->
@@ -259,7 +259,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                     <div class="row">
                         <div class="col-md-4">
                             <div class="footer-content">
-                                <div class="logo-footer"><img id="logo-footer" src="images/img_logo.png" alt=""></div>
+                                <div class="logo-footer"><img id="logo-footer" src="/images/img_logo.png" alt=""></div>
                                 <p>㈜가온앤은 ‘세상의 중심’ 그리고 and, 세상의 중심에서 무한한 발전을 실현 하고자 합니다. <br>
                                     생명의 시작부터 노년기까지,인류의 건강한 삶을  위하여 열심히 달리겠습니다.</p>
                                 <div class="separator-2"></div>
@@ -280,12 +280,12 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                                 <div class="media margin-clear">
                                     <div class="media-left">
                                         <div class="overlay-container">
-                                            <img class="media-object" src="images/blog-thumb-1.jpg" alt="blog-thumb">
+                                            <img class="media-object" src="<?php echo element('layout_skin_url', $layout); ?>/images/blog-thumb-1.jpg" alt="blog-thumb">
                                             <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <h6 class="media-heading"><a href="blog-post.html">Lorem ipsum dolor sit amet...</a></h6>
+                                        <h6 class="media-heading"><a href="blog-post.html">㈜ 가온앤 특허등록</a></h6>
                                         <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 23, 2016</p>
                                     </div>
                                     <hr>
@@ -293,12 +293,12 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                                 <div class="media margin-clear">
                                     <div class="media-left">
                                         <div class="overlay-container">
-                                            <img class="media-object" src="images/blog-thumb-2.jpg" alt="blog-thumb">
+                                            <img class="media-object" src="<?php echo element('layout_skin_url', $layout); ?>/images/blog-thumb-2.jpg" alt="blog-thumb">
                                             <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <h6 class="media-heading"><a href="blog-post.html">Lorem ipsum dolor sit amet...</a></h6>
+                                        <h6 class="media-heading"><a href="blog-post.html">한국경제 KOICA 코리아 에이드 반응좋아 ...</a></h6>
                                         <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 22, 2016</p>
                                     </div>
                                     <hr>
@@ -306,12 +306,13 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                                 <div class="media margin-clear">
                                     <div class="media-left">
                                         <div class="overlay-container">
-                                            <img class="media-object" src="images/blog-thumb-3.jpg" alt="blog-thumb">
+                                            <img class="media-object" src="<?php echo element('layout_skin_url', $layout); ?>/images/blog-thumb-3.jpg" alt="blog-thumb">
                                             <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <h6 class="media-heading"><a href="blog-post.html">Lorem ipsum dolor sit amet...</a></h6>
+                                        <h6 class="media-heading"><a href="blog-post.html">연합뉴스 에티오피아 입맛에 맞아요?...
+                                            </a></h6>
                                         <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 21, 2016</p>
                                     </div>
                                     <hr>
@@ -319,12 +320,12 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                                 <div class="media margin-clear">
                                     <div class="media-left">
                                         <div class="overlay-container">
-                                            <img class="media-object" src="images/blog-thumb-4.jpg" alt="blog-thumb">
+                                            <img class="media-object" src="<?php echo element('layout_skin_url', $layout); ?>/images/blog-thumb-4.jpg" alt="blog-thumb">
                                             <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <h6 class="media-heading"><a href="blog-post.html">Lorem ipsum dolor sit amet...</a></h6>
+                                        <h6 class="media-heading"><a href="blog-post.html">㈜ 가온앤 특허등록</a></h6>
                                         <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 21, 2016</p>
                                     </div>
                                 </div>

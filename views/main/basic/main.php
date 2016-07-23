@@ -163,13 +163,13 @@
         <!-- Tab panes -->
         <div class="tab-content clear-style">
             <div class="tab-pane active">
-                <div class="row">
+                <div class="row pv-40">
                     <div class="col-md-3">
                         <div class="image-box text-center style-2 mb-20">
                             <a href="#"><img src="http://gimepix.com/img/300-300-newborn-033" alt="" class="img-circle img-thumbnail"></a>
                             <div class="body padding-horizontal-clear">
                                 <h4 class="text-default">GAONN STORY</h4>
-                                <p class="mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus.</p>
+                                <p class="mb-10">GAONN STORY</p>
                             </div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                             <a href="#"><img src="http://gimepix.com/img/300-300-newborn-001" alt="" class="img-circle img-thumbnail"></a>
                             <div class="body padding-horizontal-clear">
                                 <h4 class="text-default">LABOVO STORY</h4>
-                                <p class="small mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus.</p>
+                                <p class="mb-10">LABOVO STORY</p>
                             </div>
                         </div>
                     </div>
@@ -187,7 +187,7 @@
                             <a href="#"><img src="http://gimepix.com/img/300-300-newborn-015" alt="" class="img-circle img-thumbnail"></a>
                             <div class="body padding-horizontal-clear">
                                 <h4 class="text-default">PRODUCT</h4>
-                                <p class="small mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus.</p>
+                                <p class="mb-10">PRODUCT</p>
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,7 @@
                             <a href="#"><img src="http://gimepix.com/img/300-300-unsplash-048" alt="" class="img-circle img-thumbnail"></a>
                             <div class="body padding-horizontal-clear">
                                 <h4 class="text-default">NOTICE</h4>
-                                <p class="small mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus.</p>
+                                <p class="mb-10">NOTICE</p>
                             </div>
                         </div>
                     </div>
@@ -221,14 +221,16 @@
                             <div class="testimonial-image">
                                 <img src="images/testimonial-1.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
                             </div>
-                            <h3>Just Perfect!</h3>
+                            <h3>㈜ 가온앤 특허등록</h3>
                             <div class="separator"></div>
                             <div class="testimonial-body">
                                 <blockquote>
-                                    <p>Sed ut perspiciatis unde omnis iste natu error sit voluptatem accusan tium dolore laud antium, totam rem dolor sit amet tristique pulvinar, turpis arcu rutrum nunc, ac laoreet turpis augue a justo.</p>
+                                    <p>㈜가온앤은 ‘세상의 중심’ 그리고 세상의 중심에서 무한한 발전을 실현 하고자 합니다. </p>
                                 </blockquote>
-                                <div class="testimonial-info-1">- Jane Doe</div>
-                                <div class="testimonial-info-2">By Company</div>
+                                <!--
+<div class="testimonial-info-1">- Jane Doe</div>
+<div class="testimonial-info-2">By Company</div>
+-->
                             </div>
                         </div>
                     </div>
@@ -239,16 +241,18 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="testimonial text-center">
                             <div class="testimonial-image">
-                                <img src="images/testimonial-2.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
+                                <img src="images/testimonial-1.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
                             </div>
-                            <h3>Amazing!</h3>
+                            <h3>㈜ 가온앤 특허등록</h3>
                             <div class="separator"></div>
                             <div class="testimonial-body">
                                 <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et cupiditate deleniti ratione in. Expedita nemo, quisquam, fuga adipisci omnis ad mollitia libero culpa nostrum est quia eos esse vel!</p>
+                                    <p>㈜가온앤은 ‘세상의 중심’ 그리고 세상의 중심에서 무한한 발전을 실현 하고자 합니다. </p>
                                 </blockquote>
-                                <div class="testimonial-info-1">- Jane Doe</div>
-                                <div class="testimonial-info-2">By Company</div>
+                                <!--
+<div class="testimonial-info-1">- Jane Doe</div>
+<div class="testimonial-info-2">By Company</div>
+-->
                             </div>
                         </div>
                     </div>
@@ -259,28 +263,22 @@
             <div class="clients-container">
                 <div class="clients">
                     <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="100">
-                        <a href="#"><img src="images/client-1.png" alt=""></a>
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-1.png" alt=""></a>
                     </div>
                     <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="200">
-                        <a href="#"><img src="images/client-2.png" alt=""></a>
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-2.png" alt=""></a>
                     </div>
                     <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="300">
-                        <a href="#"><img src="images/client-3.png" alt=""></a>
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-3.png" alt=""></a>
                     </div>
                     <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="400">
-                        <a href="#"><img src="images/client-4.png" alt=""></a>
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-4.png" alt=""></a>
                     </div>
                     <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="500">
-                        <a href="#"><img src="images/client-5.png" alt=""></a>
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-5.png" alt=""></a>
                     </div>
                     <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="600">
-                        <a href="#"><img src="images/client-6.png" alt=""></a>
-                    </div>
-                    <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="700">
-                        <a href="#"><img src="images/client-7.png" alt=""></a>
-                    </div>
-                    <div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="800">
-                        <a href="#"><img src="images/client-8.png" alt=""></a>
+                        <a href="#"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/client-6.png" alt=""></a>
                     </div>
                 </div>
             </div>
