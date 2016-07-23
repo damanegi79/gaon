@@ -1,5 +1,5 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
-<div class="banner dark-translucent-bg" style="background-image:url('http://dev.gaon.co.kr/views/_layout/basic/images/page-about-banner-1.jpg'); background-position: 50% 27%;">
+<div class="banner dark-translucent-bg" style="background-image:url('<?php echo element('layout_skin_url', $layout)?>/images/page-about-banner-1.jpg'); background-position: 50% 27%;">
     <!-- breadcrumb start -->
     <!-- ================ -->
     <div class="breadcrumb-container">
