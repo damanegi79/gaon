@@ -6,17 +6,6 @@
 //print_r($view);
 ?>
 
-<div class="banner dark-translucent-bg" style="background-image:url('<?php echo element('layout_skin_url', $layout)?>/images/main_01_01.jpg'); background-position: 50% 27%;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 text-center col-md-offset-2 pv-20">
-                <h1 class="title logo-font object-non-visible animated object-visible fadeIn" data-animation-effect="fadeIn" data-effect-delay="100"><?php echo html_escape(element('board_name', element('board', element('list', $view)))); ?></h1>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <div class="container">
     <div class="board">
         
