@@ -6,18 +6,7 @@
 //print_r($view);
 ?>
 
-<div class="banner dark-translucent-bg" style="background-image:url('<?php echo element('layout_skin_url', $layout)?>/images/page-about-banner-1.jpg'); background-position: 50% 27%;">
-    <!-- breadcrumb start -->
-    <!-- ================ -->
-    <div class="breadcrumb-container">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li><i class="fa fa-home pr-10"></i><a class="link-dark" href="<?php echo site_url(); ?>">Home</a></li>
-                <?php echo get_location_menu(element('menu', $layout)) ?>                
-            </ol>
-        </div>
-    </div>
-    <!-- breadcrumb end -->
+<div class="banner dark-translucent-bg" style="background-image:url('<?php echo element('layout_skin_url', $layout)?>/images/main_01_01.jpg'); background-position: 50% 27%;">
     <div class="container">
         <div class="row">
             <div class="col-md-8 text-center col-md-offset-2 pv-20">
@@ -31,67 +20,75 @@
 <div class="container">
     <div class="board">
         
-        <div class="table-top">
+        <div class="table-top row">
+            <div class="col-md-2" style="padding:10px">
             <?php if ( ! element('access_list', element('board', element('list', $view))) && element('use_rss_feed', element('board', element('list', $view)))) { ?>
                 <a href="<?php echo rss_url(element('brd_key', element('board', element('list', $view)))); ?>" class="btn btn-default btn-sm" title="<?php echo html_escape(element('board_name', element('board', element('list', $view)))); ?> RSS 보기"><i class="fa fa-rss"></i></a>
             <?php } ?>
-            <select class="input" onchange="location.href='<?php echo board_url(element('brd_key', element('board', element('list', $view)))); ?>?category_id=<?php echo html_escape($this->input->get('categroy_id')); ?>&amp;findex=' + this.value;">
-                <option value="">정렬하기</option>
-                <option value="post_datetime desc" <?php echo $this->input->get('findex') === 'post_datetime desc' ? 'selected="selected"' : '';?>>날짜순</option>
-                <option value="post_hit desc" <?php echo $this->input->get('findex') === 'post_hit desc' ? 'selected="selected"' : '';?>>조회수</option>
-                <option value="post_comment_count desc" <?php echo $this->input->get('findex') === 'post_comment_count desc' ? 'selected="selected"' : '';?>>댓글수</option>
-                <?php if (element('use_post_like', element('board', element('list', $view)))) { ?>
-                    <option value="post_like desc" <?php echo $this->input->get('findex') === 'post_like desc' ? 'selected="selected"' : '';?>>추천순</option>
-                <?php } ?>
-            </select>
-            <?php if (element('use_category', element('board', element('list', $view))) && ! element('cat_display_style', element('board', element('list', $view)))) { ?>
-                <select class="input" onchange="location.href='<?php echo board_url(element('brd_key', element('board', element('list', $view)))); ?>?findex=<?php echo html_escape($this->input->get('findex')); ?>&category_id=' + this.value;">
-                    <option value="">카테고리선택</option>
-                    <?php
-                    $category = element('category', element('board', element('list', $view)));
-                    function ca_select($p = '', $category = '', $category_id = '')
-                    {
-                        $return = '';
-                        if ($p && is_array($p)) {
-                            foreach ($p as $result) {
-                                $exp = explode('.', element('bca_key', $result));
-                                $len = (element(1, $exp)) ? strlen(element(1, $exp)) : '0';
-                                $space = str_repeat('-', $len);
-                                $return .= '<option value="' . html_escape(element('bca_key', $result)) . '"';
-                                if (element('bca_key', $result) === $category_id) {
-                                    $return .= 'selected="selected"';
-                                }
-                                $return .= '>' . $space . html_escape(element('bca_value', $result)) . '</option>';
-                                $parent = element('bca_key', $result);
-                                $return .= ca_select(element($parent, $category), $category, $category_id);
-                            }
-                        }
-                        return $return;
-                    }
-                    echo ca_select(element(0, $category), $category, $this->input->get('category_id'));
-                    ?>
+                <select class="input form-control" onchange="location.href='<?php echo board_url(element('brd_key', element('board', element('list', $view)))); ?>?category_id=<?php echo html_escape($this->input->get('categroy_id')); ?>&amp;findex=' + this.value;">
+                    <option value="">정렬하기</option>
+                    <option value="post_datetime desc" <?php echo $this->input->get('findex') === 'post_datetime desc' ? 'selected="selected"' : '';?>>날짜순</option>
+                    <option value="post_hit desc" <?php echo $this->input->get('findex') === 'post_hit desc' ? 'selected="selected"' : '';?>>조회수</option>
+                    <option value="post_comment_count desc" <?php echo $this->input->get('findex') === 'post_comment_count desc' ? 'selected="selected"' : '';?>>댓글수</option>
+                    <?php if (element('use_post_like', element('board', element('list', $view)))) { ?>
+                        <option value="post_like desc" <?php echo $this->input->get('findex') === 'post_like desc' ? 'selected="selected"' : '';?>>추천순</option>
+                    <?php } ?>
                 </select>
+                </div>
+                    <?php if (element('use_category', element('board', element('list', $view))) && ! element('cat_display_style', element('board', element('list', $view)))) { ?>
+                    <select class="input form-control" onchange="location.href='<?php echo board_url(element('brd_key', element('board', element('list', $view)))); ?>?findex=<?php echo html_escape($this->input->get('findex')); ?>&category_id=' + this.value;">
+                        <option value="">카테고리선택</option>
+                        <?php
+                        $category = element('category', element('board', element('list', $view)));
+                        function ca_select($p = '', $category = '', $category_id = '')
+                        {
+                            $return = '';
+                            if ($p && is_array($p)) {
+                                foreach ($p as $result) {
+                                    $exp = explode('.', element('bca_key', $result));
+                                    $len = (element(1, $exp)) ? strlen(element(1, $exp)) : '0';
+                                    $space = str_repeat('-', $len);
+                                    $return .= '<option value="' . html_escape(element('bca_key', $result)) . '"';
+                                    if (element('bca_key', $result) === $category_id) {
+                                        $return .= 'selected="selected"';
+                                    }
+                                    $return .= '>' . $space . html_escape(element('bca_value', $result)) . '</option>';
+                                    $parent = element('bca_key', $result);
+                                    $return .= ca_select(element($parent, $category), $category, $category_id);
+                                }
+                            }
+                            return $return;
+                        }
+                        echo ca_select(element(0, $category), $category, $this->input->get('category_id'));
+                        ?>
+                    </select>
+                </div>
             <?php } ?>
-            <div class="col-md-6">
+            <div class="col-md-10">
                 <div class=" searchbox">
+                    <?php if(element('brd_search', element('board', element('list', $view)))): ?>
                     <form class="navbar-form navbar-right pull-right" action="<?php echo board_url(element('brd_key', element('board', element('list', $view)))); ?>" onSubmit="return postSearch(this);">
                         <input type="hidden" name="findex" value="<?php echo html_escape($this->input->get('findex')); ?>" />
                         <input type="hidden" name="category_id" value="<?php echo html_escape($this->input->get('category_id')); ?>" />
                         <div class="form-group">
-                            <select class="input pull-left px100" name="sfield">
+                            <select class="input pull-left px100 form-control" name="sfield">
                                 <option value="post_both" <?php echo ($this->input->get('sfield') === 'post_both') ? ' selected="selected" ' : ''; ?>>제목+내용</option>
                                 <option value="post_title" <?php echo ($this->input->get('sfield') === 'post_title') ? ' selected="selected" ' : ''; ?>>제목</option>
                                 <option value="post_content" <?php echo ($this->input->get('sfield') === 'post_content') ? ' selected="selected" ' : ''; ?>>내용</option>
+                                <!--
                                 <option value="post_nickname" <?php echo ($this->input->get('sfield') === 'post_nickname') ? ' selected="selected" ' : ''; ?>>회원명</option>
                                 <option value="post_userid" <?php echo ($this->input->get('sfield') === 'post_userid') ? ' selected="selected" ' : ''; ?>>회원아이디</option>
+                                -->
                             </select>
-                            <input type="text" class="input px150" placeholder="Search" name="skeyword" value="<?php echo html_escape($this->input->get('skeyword')); ?>" />
-                            <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search"></i></button>
+                            <div class="input-group" style="padding-left:10px">
+                                <input type="text" class="form-control" placeholder="검색" name="skeyword" value="<?php echo html_escape($this->input->get('skeyword')); ?>">
+                                <span class="input-group-btn">
+                                    <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-dark" type="submit" style="margin:0;padding:9px 10px"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
                         </div>
                     </form>
-                </div>
-                <div class="searchbuttonbox">
-                    <button class="btn btn-primary btn-sm pull-right" type="button" onClick="toggleSearchbox();"><i class="fa fa-search"></i></button>
+                    <?php endif; ?>
                 </div>
                 <?php if (element('point_info', element('list', $view))) { ?>
                     <div class="point-info pull-right mr10">
@@ -144,6 +141,7 @@
                 ?>
             </ul>
         <?php } ?>
+        <div class="table-content">
         <?php
         $attributes = array('name' => 'fboardlist', 'id' => 'fboardlist');
         echo form_open('', $attributes);
@@ -151,31 +149,56 @@
 
 
             <?php if(element('list', element('data', element('list', $view)))) : ?>
-                <?php foreach (element('list', element('data', element('list', $view))) as $result) : ?>
+                <?php
+                    $boardList = element('list', element('data', element('list', $view)));
+                    $boardCount = 0;
+                    $boardLength = count($boardList); 
+                ?>
+                <?php foreach ($boardList as $result) : ?>
 
                     <article class="blogpost">
                         <header>
-                            <h2><a href="<?php echo element('post_url', $result); ?>"><?php echo html_escape(element('title', $result)); ?></a></h2>
+                            <h2>
+                                <a href="<?php echo element('post_url', $result); ?>"><?php echo html_escape(element('title', $result)); ?></a>
+                                <?php if (element('post_file', $result)) { ?><span class="fa fa-download" style="font-size:18px"></span><?php } ?>
+                                <?php if (element('post_secret', $result)) { ?><span class="fa fa-lock" style="font-size:18px"></span><?php } ?>
+                                <?php if (element('is_hot', $result)) { ?><span class="label label-danger">Hot</span><?php } ?>
+                                <?php if (element('is_new', $result)) { ?><span class="label label-warning">New</span><?php } ?>
+                            </h2>
                             <div class="post-info">
                                 <span class="post-date">
                                     <i class="icon-calendar"></i>
                                     <?php echo html_escape(element('post_updated_datetime', $result)); ?>
                                 </span>
                                 <span class="submitted"><i class="icon-user-1"></i> <?php echo element('display_name', $result); ?></span>
-                                <span class="comments"><i class="icon-chat"></i> <a href="#">22 comments</a></span>
+                                <span class="comments">
+                                <i class="icon-chat"></i>
+                                <?php if (element('post_comment_count', $result)) { ?>
+                                    <?php echo element('post_comment_count', $result); ?>
+                                <?php }else{ ?>
+                                    0
+                                <?php } ?>
+                                </span>
                             </div>
                         </header>
                         <div class="blogpost-content">
                             <p><?php echo mb_strimwidth(strip_tags(element('post_content', $result)), 0, 280, '...', 'utf-8'); ?></p>
                         </div>
-                        <footer class="clearfix">
-                            <!--<div class="link pull-left"><i class="icon-link"></i><a href="<?php echo element('post_url', $result); ?>">더보기</a></div>-->
-                        </footer>
+                        <?php if($boardCount < $boardLength-1) : ?>
+                            <footer class="clearfix"></footer>
+                        <?php endif; ?>
                     </article>
-
+                    <?php $boardCount++; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
 
+            <?php if ( ! element('notice_list', element('list', $view)) && ! element('list', element('data', element('list', $view)))): ?>
+                <article class="blogpost">
+                    <div class="blogpost-content">
+                        <p class="text-center">게시물이 없습니다.</p>
+                    </div>
+                </article>
+            <?php endif ?> 
 
 
 
@@ -184,6 +207,7 @@
 
 
 
+            <!--
             <table class="table">
                 <thead>
                     <tr>
@@ -260,14 +284,17 @@
                 <?php } ?>
                 </tbody>
             </table>
+            -->
         <?php echo form_close(); ?>
-
-        <div class="table-bottom mt20">
+        </div>
+        <nav class="text-center"><?php echo element('paging', element('list', $view)); ?></nav>
+        <div class="table-bottom">
             <div class="pull-left mr10">
-                <a href="<?php echo element('list_url', element('list', $view)); ?>" class="btn btn-default btn-sm">목록</a>
+                <!--<a href="<?php echo element('list_url', element('list', $view)); ?>" class="btn btn-default btn-sm">목록</a>
                 <?php if (element('search_list_url', element('list', $view))) { ?>
                     <a href="<?php echo element('search_list_url', element('list', $view)); ?>" class="btn btn-default btn-sm">검색목록</a>
                 <?php } ?>
+                -->
             </div>
             <?php if (element('is_admin', $view)) { ?>
                 <div class="pull-left">
@@ -291,12 +318,20 @@
                 </div>
             <?php } ?>
             <?php if (element('write_url', element('list', $view))) { ?>
-                <div class="pull-right">
-                    <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">글쓰기</a>
-                </div>
+                <?php if(element('always_show_write_button', element('list', $view))): ?>
+                    <div class="pull-right">
+                        <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">글쓰기</a>
+                    </div>
+                <? else: ?>
+                    <?php if(element('is_admin', $view) === 'super'): ?>
+                        <div class="pull-right">
+                            <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">글쓰기</a>
+                        </div>
+                    <?php endif; ?>
+                <? endif; ?>
             <?php } ?>
         </div>
-        <nav><?php echo element('paging', element('list', $view)); ?></nav>
+        
     </div>
 </div>
 
