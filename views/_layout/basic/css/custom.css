@@ -19,10 +19,44 @@ File Description: Place here your custom CSS styles
     font-weight: normal; font-style: normal; }
 
 
-html, body {color:#666; font:14p 'Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic; min-width:320px;}
-h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{}
+html, body {color:#666; font:14p font-family: 'malgun gothic','Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic; min-width:320px;}
+h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic;}
 .clients .client-image{ width:160px;}
-.board .blogpost{margin-bottom:0}
-.main-navigation .navbar-nav a{text-transform:uppercase}
-.blogpost header h2 span{font-size:11px;vertical-align:middle;font-weight:normal}
-.banner h1{text-transform:uppercase}
+
+
+.banner{min-height: 400px !important;}
+.banner p{font-size: 16px; line-height: 140%;}
+.page-title{font-family: 'malgun gothic'; font-size: 40px;}
+.banner h2 {font-size: 40px; padding-top: 40px;}
+.banner h2 span{font-size: 30px;}
+
+@media (max-width: 1199px)
+.full-width-section:not(.no-image) .full-text-container.light-gray-bg {
+        background:none;
+        color: #000000;
+        border-top: none;
+        border-bottom: none;
+        width: 100%;
+}
+
+.full-text-container{position: relative;}
+@media (max-width: 991px)
+    .full-width-section:not(.no-image) .full-text-container {
+        top: 0;
+        height: 100%;
+        padding: 0;
+    }
+
+
+@media (max-width:767px){
+    body{font-size: 14px;}
+    .page-title{font-family: 'malgun gothic'; font-size: 30px;}
+    .pv-40{ padding: 20px 0px !important;}
+    .full-text-container {padding: 0 !important;}
+    .banner h2 {font-size: 20px; padding-top: 40px;}
+    .banner h2 span{font-size:20px;}
+    .banner p{font-size: 14px;}
+    .text-right{ text-align: left;}
+    .separator-3{}
+    h3{font-size: 20px;}
+}
