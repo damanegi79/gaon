@@ -19,19 +19,33 @@
                         <!-- main image -->
                         <img src="http://gimepix.com/img/1920-1280-newborn-001" alt="slidebg1" data-bgposition="center top"  data-bgrepeat="no-repeat" data-bgfit="cover">
 
-                        <!-- Transparent Background -->
                         <div class="tp-caption dark-translucent-bg"
                              data-x="center"
-                             data-y="bottom"
-                             data-speed="500"
-                             data-easing="easeOutQuad"
-                             data-start="0">
+                             data-y="center"
+                             data-start="0"
+                             data-transform_in="opacity:0;s:600;e:Power2.easeInOut;"
+                             data-transform_out="opacity:0;s:600;s:300;"
+                             data-width="5000"
+                             data-height="5000">
                         </div>
-
+                        <!-- Video Background -->
+                        <div class="rs-background-video-layer"
+                             data-forcerewind="on"
+                             data-volume="mute"
+                             data-videowidth="100%"
+                             data-videoheight="100%"
+                             data-videomp4="videos/background-video-banner.mp4"
+                             data-videopreload="preload"
+                             data-videoloop="loopandnoslidestop"
+                             data-aspectratio="16:9"
+                             data-autoplay="true"
+                             data-autoplayonlyfirsttime="false"
+                             data-nextslideatend="true">
+                        </div>
                         <!-- LAYER NR. 1 -->
                         <div class="tp-caption sfb fadeout large_white"
                              data-x="left"
-                             data-y="70"
+                             data-y="200"
                              data-speed="500"
                              data-start="1000"
                              data-easing="easeOutQuad"
@@ -40,17 +54,25 @@
                         <!-- LAYER NR. 1 -->
                         <div class="tp-caption sfb fadeout large_white"
                              data-x="left"
-                             data-y="150"
+                             data-y="270"
                              data-speed="500"
                              data-start="1500"
                              data-easing="easeOutQuad"
-                             data-end="10000">내가족의 시작부터 함께합니다.
+                             data-end="10000"><div class="separator-2 light"></div>
+                        </div>
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption medium_white"
+                             data-x="left"
+                             data-y="290"
+                             data-speed="500"
+                             data-start="2000"
+                             data-easing="easeOutQuad">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br> Nesciunt, maiores, aliquid. Repellat eum numquam aliquid culpa offici,<br> tenetur fugiat dolorum sapiente eligendi
                         </div>
                         <!-- LAYER NR. 10 -->
                         <div class="tp-caption fade fadeout"
                              data-x="center"
                              data-y="bottom"
-                             data-voffset="100"
+                             data-voffset="0"
                              data-speed="500"
                              data-easing="easeOutQuad"
                              data-start="2000"
