@@ -413,4 +413,4 @@ Skin URL : <?php echo element('view_skin_url', $layout); ?>,
 </body>
 </html>
 
-<?php print_r($layout); ?>
+<?php //print_r($layout); ?>
