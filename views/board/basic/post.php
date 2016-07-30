@@ -245,6 +245,82 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
     </div>
 </div>
 
+
+
+
+
+
+
+ <!-- main-container start -->
+            <!-- ================ -->
+            <section class="main-container border-clear light-gray-bg ">
+                <div class="container">
+                    <div class="row">
+
+                        <!-- main start -->
+                        <!-- ================ -->
+                        <div class="main col-md-12">
+                            <h1 class="bbs-title">지역·연령 따라 선호 에어컨이 다르다…왜?</h1>
+
+                            <div class="separator-2"></div>
+                            <div class="post-info fR">
+                                <span class="post-date">
+                                    <i class="icon-calendar"></i>
+                                    <span class="month">2016년 08월</span>
+                                    <span class="day">12일</span>
+                                </span>
+                                <span class="submitted"><i class="icon-user-1"></i> 관리자</span>
+                            </div>
+                            <section class="full-width-section pv-40">
+                                <article class="blogpost object-non-visible" data-animation-effect="fadeInUp" data-effect-delay="100">
+                                    <div class="blogpost-content">
+                                        <p><img src="/images/layout/bbs_photo.jpg" alt=""></p>
+                                        <p class="large pv-20">(주) 가온앤 은 검증된 BT 역량과 PHR data 획득을 포함한 맞춤형 헬스케어 IT 솔루션 개발 역량, 성공적 Medical Business Consulting 경험을 바탕으로 신규 Medical & Healthcare 사업 및 B2B & B2C 사업역량을 확장하고자 하는 고객에게 최상의 서비스와 플랫폼을 개발, 제공 하는 기업입니다.</p>
+                                        `지역과 연령에 따라 선호하는 에어컨이 다르다?` <br><br>
+
+                                        올해 국내 에어컨 시장 최고 히트작은 단연 삼성전자 `무풍에어컨`이다. 무풍에어컨은 유통업계 추산으로 에어컨 시장 점유율이 60~70%에 달한다. 하지만 전국에서 무풍에어컨이 다 인기를 얻는 것은 아니다. <br>소비자가 거주하는 지역과 성향에 따라 인기 제품 판도가 다른 것으로 나타났다.<br><br>
+
+                                        31일 업계에 따르면 서울·수도권에서는 무풍에어컨이, 지방에서는 휘센 듀얼 에어컨이 더 인기를 얻고 있다. 소비자 연령별로 보면 20대부터 40대까지 소비자는 무풍에어컨을 선호하고, 50대 이상 고연령층에서는 LG 휘센 듀얼 에어컨을 선호하는 것으로 나타났다.<br><br>
+
+                                        무풍에어컨은 삼성전자가 올해 출시한 혁신제품이다. 찬바람이 직접 몸에 닿지 않으면서도 시원함을 유지하는 무풍냉방 기능이 핵심이다. 송풍구를 3도 기울여 포물선 회오리 바람이 나오게 해 강력냉방으로 실내 온도를 급격히 낮춘다. 이후에는 에어컨 전면 `메탈쿨링 패널`에 적용된 약 13만5000개 `마이크로 홀(미세 구멍)`을 통해 냉기를 내뿜어 온도를 유지한다.
+                                    </div>
+                                    <footer class="clearfix object-non-visible" data-animation-effect="fadeInUp" data-effect-delay="100">
+                                        <div class="link pull-left left_btn_line">
+                                            <a href="#" class="btn btn-default-transparent">이전</a>
+                                            <a href="#" class="btn btn-default-transparent">다음</a>
+                                        </div>
+                                        <div class="link pull-right">
+                                            <a href="#" class="btn btn-default-transparent">글쓰기</a>
+                                            <a href="#" class="btn btn-default-transparent">수정</a>
+                                            <a href="#" class="btn btn-default">목록</a>
+                                        </div>
+<!--
+
+                                        <ul class="social-links circle colored clearfix animated-effect-1 pull-left">
+                                            <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                                            <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+                                            <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                        </ul>
+-->
+
+                                    </footer>
+                                </article>
+                            </section>
+
+                        </div>
+                        <!-- main end -->
+
+                    </div>
+                </div>
+
+            </section>
+            <!-- main-container end -->
+
+            
+
+
+
+
 <?php echo element('footercontent', element('board', $view)); ?>
 
 <?php if (element('target_blank', element('board', $view))) { ?>

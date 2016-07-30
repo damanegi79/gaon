@@ -328,7 +328,10 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                             <div class="footer-content">
                                 <h2 class="title">Contact Us</h2>
                                 <div class="separator-2"></div>
-                                <p>서울특별시 강남구 봉은사로 129, <br> 논현동 거평타운 B1 102호</p>
+                                <?php if ($this->cbconfig->item('company_address')) { ?>
+                                    <p><?php echo $this->cbconfig->item('company_address'); ?></p>
+                                <?php } ?>
+                                <!--
                                 <ul class="social-links circle animated-effect-1">
                                     <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
                                     <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
@@ -336,6 +339,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                                     <li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
                                     <li class="xing"><a target="_blank" href="http://www.xing.com"><i class="fa fa-xing"></i></a></li>
                                 </ul>
+                                -->
                                 <div class="separator-2"></div>
                                 <ul class="list-icons">
                                     <li><i class="fa fa-phone pr-10 text-default"></i> 02.3444.1958</li>
@@ -413,4 +417,3 @@ Skin URL : <?php echo element('view_skin_url', $layout); ?>,
 </body>
 </html>
 
-<?php //print_r($layout); ?>

@@ -9,7 +9,7 @@ if (element('latest', $view))
         <div class="media-left">
             <div class="overlay-container">
                 <img class="media-object" src="<?php echo element('thumb_url', $value); ?>" alt="blog-thumb">
-                <a href="<?php echo element('url', $value); ?>" class="overlay-link small"><i class="fa fa-link"></i></a>
+                <a href="<?php echo element('url', $value); ?>" class="overlay-link small one-line"><i class="fa fa-link"></i></a>
             </div>
         </div>
         <div class="media-body">
