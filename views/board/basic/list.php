@@ -321,13 +321,13 @@
                     <div class="pull-right">
                         <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">글쓰기</a>
                     </div>
-                <? else: ?>
+                <?php else: ?>
                     <?php if(element('is_admin', $view) === 'super'): ?>
                         <div class="pull-right">
                             <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">글쓰기</a>
                         </div>
                     <?php endif; ?>
-                <? endif; ?>
+                <?php endif; ?>
             <?php } ?>
         </div>
         
