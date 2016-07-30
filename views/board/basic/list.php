@@ -144,34 +144,44 @@
                     $boardLength = count($boardList); 
                 ?>
                 <?php foreach ($boardList as $result) : ?>
-
+                    
                     <article class="blogpost">
-                        <header>
-                            <h2>
-                                <a href="<?php echo element('post_url', $result); ?>"><?php echo html_escape(element('title', $result)); ?></a>
-                                <?php if (element('post_file', $result)) { ?><span class="fa fa-download" style="font-size:18px"></span><?php } ?>
-                                <?php if (element('post_secret', $result)) { ?><span class="fa fa-lock" style="font-size:18px"></span><?php } ?>
-                                <?php if (element('is_hot', $result)) { ?><span class="label label-danger">Hot</span><?php } ?>
-                                <?php if (element('is_new', $result)) { ?><span class="label label-warning">New</span><?php } ?>
-                            </h2>
-                            <div class="post-info">
-                                <span class="post-date">
-                                    <i class="icon-calendar"></i>
-                                    <?php echo html_escape(element('post_updated_datetime', $result)); ?>
-                                </span>
-                                <span class="submitted"><i class="icon-user-1"></i> <?php echo element('display_name', $result); ?></span>
-                                <span class="comments">
-                                <i class="icon-chat"></i>
-                                <?php if (element('post_comment_count', $result)) { ?>
-                                    <?php echo element('post_comment_count', $result); ?>
-                                <?php }else{ ?>
-                                    0
-                                <?php } ?>
-                                </span>
+                        <div class="row grid-space-10">
+                            <div class="col-md-3">
+                                <div class="overlay-container">
+                                    <img src="<?php echo element('thumb_url', $result); ?>" alt="<?php echo html_escape(element('title', $result)); ?>" title="<?php echo html_escape(element('title', $result)); ?>" style="width:100%;height:auto" />
+                                    <a class="overlay-link" href="<?php echo element('post_url', $result); ?>"><i class="fa fa-link"></i></a>
+                                </div>
                             </div>
-                        </header>
-                        <div class="blogpost-content">
-                            <p><?php echo mb_strimwidth(strip_tags(element('post_content', $result)), 0, 280, '...', 'utf-8'); ?></p>
+                            <div class="col-md-9">
+                                <header>
+                                    <h2>
+                                        <a href="<?php echo element('post_url', $result); ?>"><?php echo html_escape(element('title', $result)); ?></a>
+                                        <?php if (element('post_file', $result)) { ?><span class="fa fa-download" style="font-size:18px"></span><?php } ?>
+                                        <?php if (element('post_secret', $result)) { ?><span class="fa fa-lock" style="font-size:18px"></span><?php } ?>
+                                        <?php if (element('is_hot', $result)) { ?><span class="label label-danger">Hot</span><?php } ?>
+                                        <?php if (element('is_new', $result)) { ?><span class="label label-warning">New</span><?php } ?>
+                                    </h2>
+                                    <div class="post-info">
+                                        <span class="post-date">
+                                            <i class="icon-calendar"></i>
+                                            <?php echo html_escape(element('post_updated_datetime', $result)); ?>
+                                        </span>
+                                        <span class="submitted"><i class="icon-user-1"></i> <?php echo element('display_name', $result); ?></span>
+                                        <span class="comments">
+                                        <i class="icon-chat"></i>
+                                        <?php if (element('post_comment_count', $result)) { ?>
+                                            <?php echo element('post_comment_count', $result); ?>
+                                        <?php }else{ ?>
+                                            0
+                                        <?php } ?>
+                                        </span>
+                                    </div>
+                                </header>
+                                <div class="blogpost-content">
+                                    <p><?php echo mb_strimwidth(strip_tags(element('post_content', $result)), 0, 390, '...', 'utf-8'); ?></p>
+                                </div>
+                            </div>
                         </div>
                         <?php if($boardCount < $boardLength-1) : ?>
                             <footer class="clearfix"></footer>

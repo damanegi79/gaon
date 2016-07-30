@@ -1,41 +1,34 @@
-<div class="main_box1 pull-left">
-    <div class="table-box">
-    <!-- Default panel contents -->
-        <div class="table-heading">
-            <?php echo html_escape(element('board_name', element('board', $view))); ?>
-            <div class="view-all pull-right">
-                <a href="<?php echo board_url(element('brd_key', element('board', $view))); ?>" title="<?php echo html_escape(element('board_name', element('board', $view))); ?>">더보기 <i class="fa fa-angle-right"></i></a>
+<?php
+$i = 0;
+if (element('latest', $view)) 
+{
+    foreach (element('latest', $view) as $key => $value) 
+    {
+?>
+    <div class="media margin-clear">
+        <div class="media-left">
+            <div class="overlay-container">
+                <img class="media-object" src="<?php echo element('thumb_url', $value); ?>" alt="blog-thumb">
+                <a href="<?php echo element('url', $value); ?>" class="overlay-link small"><i class="fa fa-link"></i></a>
             </div>
         </div>
-        <!-- Table -->
-        <table class="table-body">
-            <tbody>
-            <?php
-            $i = 0;
-            if (element('latest', $view)) {
-                foreach (element('latest', $view) as $key => $value) {
-            ?>
-                <tr>
-                    <td><a href="<?php echo element('url', $value); ?>" title="<?php echo html_escape(element('title', $value)); ?>"><?php echo html_escape(element('title', $value)); ?></a>
-                        <?php if (element('post_comment_count', $value)) { ?> <span class="latest_comment_count"> +<?php echo element('post_comment_count', $value); ?></span><?php } ?>
-                    </td>
-                    <td class="px80"><?php echo element('display_datetime', $value); ?></td>
-                </tr>
-            <?php
-                    $i++;
-                }
-            }
-            while ($i < element('latest_limit', $view)) {
-            ?>
-                <tr>
-                    <td>게시물이 없습니다</td>
-                    <td class="px80"></td>
-                </tr>
-            <?php
-                    $i++;
-                }
-            ?>
-            </tbody>
-        </table>
+        <div class="media-body">
+            <h6 class="media-heading"><a href="<?php echo element('url', $value); ?>"><?php echo html_escape(element('title', $value)); ?></a></h6>
+            <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i><?php echo element('display_datetime', $value); ?></p>
+        </div>
+        <hr>
     </div>
-</div>
+<?php
+        $i++;
+    }
+}
+while ($i < element('latest_limit', $view)) {
+?>
+
+
+
+<?php
+        $i++;
+    }
+?>
+

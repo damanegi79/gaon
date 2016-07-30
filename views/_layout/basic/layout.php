@@ -1,3 +1,7 @@
+<?php
+//print_r($layout);
+//print_r($view);
+?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -265,10 +269,38 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                                 <div class="separator-2"></div>
                                 <nav>
                                     <ul class="nav nav-pills nav-stacked">
-                                        <li><a target="_blank" href="http://htmlcoder.me/support">GAONN</a></li>
-                                        <li><a href="#">LABOVO</a></li>
-                                        <li><a href="#">PRODUCT</a></li>
-                                        <li><a href="page-about.html">NOTICE</a></li>
+                                        <?php
+                                        $menuhtml = '';
+                                        if (element('menu', $layout)) {
+                                            $menu = element('menu', $layout);
+                                            if (element(0, $menu)) {
+                                                foreach (element(0, $menu) as $mkey => $mval) 
+                                                {
+                                                    if (element(element('men_id', $mval), $menu))
+                                                    {
+                                                        $mlink = element('men_link', $mval) ? element('men_link', $mval) : 'javascript:;';
+                                                        $menuhtml .= '<li>
+                                                        <a href="' . $mlink . '" ' . element('men_custom', $mval);
+                                                        if (element('men_target', $mval))
+                                                        {
+                                                            $menuhtml .= ' target="' . element('men_target', $mval) . '"';
+                                                        }
+                                                        $menuhtml .= ' title="' . html_escape(element('men_name', $mval)) . '">' . html_escape(element('men_name', $mval)) . '</a>';
+                                                    }
+                                                    else
+                                                    {
+                                                        $mlink = element('men_link', $mval) ? element('men_link', $mval) : 'javascript:;';
+                                                        $menuhtml .= '<li><a href="' . $mlink . '" ' . element('men_custom', $mval);
+                                                        if (element('men_target', $mval)) {
+                                                            $menuhtml .= ' target="' . element('men_target', $mval) . '"';
+                                                        }
+                                                        $menuhtml .= ' title="' . html_escape(element('men_name', $mval)) . '">' . html_escape(element('men_name', $mval)) . '</a></li>';
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        echo $menuhtml;
+                                        ?>
                                     </ul>
                                 </nav>
                             </div>
@@ -277,61 +309,19 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                             <div class="footer-content">
                                 <h2 class="title">Latest News</h2>
                                 <div class="separator-2"></div>
-                                <div class="media margin-clear">
-                                    <div class="media-left">
-                                        <div class="overlay-container">
-                                            <img class="media-object" src="<?php echo element('layout_skin_url', $layout); ?>/images/blog-thumb-1.jpg" alt="blog-thumb">
-                                            <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading"><a href="blog-post.html">㈜ 가온앤 특허등록</a></h6>
-                                        <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 23, 2016</p>
-                                    </div>
-                                    <hr>
-                                </div>
-                                <div class="media margin-clear">
-                                    <div class="media-left">
-                                        <div class="overlay-container">
-                                            <img class="media-object" src="<?php echo element('layout_skin_url', $layout); ?>/images/blog-thumb-2.jpg" alt="blog-thumb">
-                                            <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading"><a href="blog-post.html">한국경제 KOICA 코리아 에이드 반응좋아 ...</a></h6>
-                                        <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 22, 2016</p>
-                                    </div>
-                                    <hr>
-                                </div>
-                                <div class="media margin-clear">
-                                    <div class="media-left">
-                                        <div class="overlay-container">
-                                            <img class="media-object" src="<?php echo element('layout_skin_url', $layout); ?>/images/blog-thumb-3.jpg" alt="blog-thumb">
-                                            <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading"><a href="blog-post.html">연합뉴스 에티오피아 입맛에 맞아요?...
-                                            </a></h6>
-                                        <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 21, 2016</p>
-                                    </div>
-                                    <hr>
-                                </div>
-                                <div class="media margin-clear">
-                                    <div class="media-left">
-                                        <div class="overlay-container">
-                                            <img class="media-object" src="<?php echo element('layout_skin_url', $layout); ?>/images/blog-thumb-4.jpg" alt="blog-thumb">
-                                            <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading"><a href="blog-post.html">㈜ 가온앤 특허등록</a></h6>
-                                        <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 21, 2016</p>
-                                    </div>
-                                </div>
-                                <div class="text-right space-top">
-                                    <a href="blog-large-image-right-sidebar.html" class="link-dark"><i class="fa fa-plus-circle pl-5 pr-5"></i>More</a>
-                                </div>
+                                <?php
+                                $config = array(
+                                    'skin' => 'basic',
+                                    'brd_id' => '',
+                                    'limit' => 4,
+                                    'length' => "",
+                                    'is_gallery' => true,
+                                    'image_width' => '',
+                                    'image_height' => '',
+                                    'cache_minute' => 1,
+                                );
+                                echo $this->board->latest($config);
+                                ?>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -379,6 +369,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 
 
 
+
 <script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/plugins/modernizr.js"></script>
 <script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
@@ -421,3 +412,5 @@ Skin URL : <?php echo element('view_skin_url', $layout); ?>,
 
 </body>
 </html>
+
+<?php print_r($layout); ?>

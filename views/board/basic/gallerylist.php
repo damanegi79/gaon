@@ -1,7 +1,10 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
 <?php echo element('headercontent', element('board', element('list', $view))); ?>
-
+<?php
+//print_r($layout);
+print_r($view);
+?>
 <div class="board">
     <h3><?php echo html_escape(element('board_name', element('board', element('list', $view)))); ?></h3>
     <div class="table-top">
