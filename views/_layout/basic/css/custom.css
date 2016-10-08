@@ -83,3 +83,4 @@ h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum 
 .navbar-nav li > a{text-transform:uppercase}
 .blogpost{margin:0}
 .blogpost header h2 span{font-size:12px;vertical-align:middle;font-weight:normal;position:relative;top:-3px}
+.one-line{display:inline-block;width:100%;text-overflow: ellipsis;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
