@@ -19,5 +19,15 @@ File Description: Place here your custom CSS styles
     font-weight: normal; font-style: normal; }
 
 
-html, body {color:#666; font:14p 'Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic; min-width:320px;}
+html, body {color:#666; font:'Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic; min-width:320px;}
 h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{}
+.banner.parallax, .banner.light-translucent-bg, .banner.dark-translucent-bg, .banner.default-translucent-bg{min-height:340px;text-shadow:1px 1px 2px rgba(0,0,0,0.3)}
+.dark-translucent-bg:after{background-color:rgba(0,0,0,0.1)}
+.banner.dark-translucent-bg h2{font-size:40px;font-weight:bold}
+.banner.dark-translucent-bg p{font-size:20px}
+.story-box {margin-top:30px}
+.story-box .body{padding-left:30px}
+.story-box .body.text-right{padding-right:30px}
+@media (max-width: 991px) {
+  .story-box .body{padding-left:0}
+}
