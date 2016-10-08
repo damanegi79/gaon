@@ -81,7 +81,6 @@ h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum 
     .left_btn_line{display: none;}
 }
 
-.light-gray-bg{background-color: #fff;}
 .clients .client-image{margin: 20px 10px; height: auto;}
 .transparent-header .header:not(.dark) .site-slogan{color: #888;}
 .site-slogan{display: none !important;}
@@ -105,3 +104,5 @@ h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum 
   .story-box .body{padding-left:0}
 }
 
+.header{background-color: #fff;}
+.isotope-container-fitrows img{width: 100%;}
