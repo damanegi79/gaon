@@ -83,5 +83,11 @@ h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum 
 .light-gray-bg{background-color: #fff;}
 .clients .client-image{margin: 20px 10px; height: auto;}
 .transparent-header .header:not(.dark) .site-slogan{color: #888;}
-.site-slogan{display: none;}
-.header-left{padding:5px 0 0 0;}
+.site-slogan{display: none !important;}
+.header-left{padding:3px 0 0 0;}
+@media (max-width: 767px){
+    .transparent-header .header-left{padding:0 !important;}
+}
+.fixed-header-on .header .logo img {
+    max-height: 48px;
+}
