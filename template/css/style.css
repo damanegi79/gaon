@@ -1516,6 +1516,18 @@ h5 + .separator {
   padding-top: 40px;
   padding-bottom: 40px;
 }
+.pv-50 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.pv-80 {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.pv-100 {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
 .mt-5 {
   margin-top: 5px;
 }
