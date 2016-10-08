@@ -19,8 +19,81 @@ File Description: Place here your custom CSS styles
     font-weight: normal; font-style: normal; }
 
 
-html, body {color:#666; font:'Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic; min-width:320px;}
-h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{}
+
+html, body {color:#666; font:14p font-family: 'malgun gothic','Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic; min-width:320px;}
+h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic;}
+.clients .client-image{ width:160px;}
+
+
+.banner{min-height: 400px !important;}
+.banner p{font-size: 16px; line-height: 140%;}
+.page-title{font-family: 'malgun gothic'; font-size: 40px;}
+.banner h2 {font-size: 40px; padding-top: 40px;}
+.banner h2 span{font-size: 30px;}
+
+
+
+.bbs-title{font-size: 30px;}
+.blogpost { margin: 0;}
+.blogpost footer{font-size:15px;}
+
+.post-info{text-align: right;}
+.social-links {margin-top: 10px;}
+.social-links li{margin: 0 5px;}
+.blogpost .blogpost-content{padding-bottom:40px;}
+.blogpost .blogpost-content img{margin: auto; margin-bottom: 20px;}
+
+@media (max-width: 1199px)
+    .full-width-section:not(.no-image) .full-text-container.light-gray-bg {
+        background:none;
+        color: #000000;
+        border-top: none;
+        border-bottom: none;
+        width: 100%;
+}
+
+.full-text-container{position: relative;}
+@media (max-width: 991px)
+    .full-width-section:not(.no-image) .full-text-container {
+        top: 0;
+        height: 100%;
+        padding: 0;
+}
+
+
+@media (max-width:767px){
+    body{font-size: 14px;}
+    .page-title{font-family: 'malgun gothic'; font-size: 30px;}
+    .bbs-title{font-size: 25px;}
+    .pv-40{ padding: 20px 0px !important;}
+    .full-text-container {padding: 0 !important;}
+    .banner h2 {font-size: 20px; padding-top: 40px;}
+    .banner h2 span{font-size:20px;}
+    .banner p{font-size: 14px;}
+    .text-right{ text-align: left;}
+    .separator-3{}
+    h3{font-size: 20px;}
+    .image-box .body {padding: 15px 0px;}
+    .social-links{text-align: center; width: 100%;}
+    .social-links li{display: inline-block; float: none;}
+    .link{text-align: center; float: none !important;}
+    .main-container{padding-bottom: 0;}
+    .left_btn_line{display: none;}
+}
+
+.light-gray-bg{background-color: #fff;}
+.clients .client-image{margin: 20px 10px; height: auto;}
+.transparent-header .header:not(.dark) .site-slogan{color: #888;}
+.site-slogan{display: none !important;}
+.header-left{padding:3px 0 0 0;}
+@media (max-width: 767px){
+    .transparent-header .header-left{padding:0 !important;}
+}
+.fixed-header-on .header .logo img {
+    max-height: 48px;
+}
+
+
 .banner.parallax, .banner.light-translucent-bg, .banner.dark-translucent-bg, .banner.default-translucent-bg{min-height:340px;text-shadow:1px 1px 2px rgba(0,0,0,0.3)}
 .dark-translucent-bg:after{background-color:rgba(0,0,0,0.1)}
 .banner.dark-translucent-bg h2{font-size:40px;font-weight:bold}
@@ -31,3 +104,4 @@ h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{}
 @media (max-width: 991px) {
   .story-box .body{padding-left:0}
 }
+
