@@ -237,7 +237,7 @@ var ContentBuilder = ContentBuilder || (function ()
                     return area;
                 }
             }
-            return null
+            return null;
         }
 
     });
