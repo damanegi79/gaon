@@ -1,0 +1,122 @@
+/* Theme Name: The Project - Responsive Website Template
+Author:HtmlCoder
+Author URI:http://www.htmlcoder.me
+Author e-mail:htmlcoder.me@gmail.com
+Version:1.2.0
+Created:December 2014
+License URI:http://support.wrapbootstrap.com/
+File Description: Place here your custom CSS styles
+*/
+
+
+@font-face {
+    font-family: 'Nanum Gothic';
+    src: url("/fonts/font/NanumGothic.eot");
+    src: url("/fonts/font/NanumGothic.eot?#iefix") format("embedded-opentype"),
+        url("/fonts/font/NanumGothic.woff") format("woff"),
+        url("/fonts/font/NanumGothic.ttf") format("truetype"),
+        url("/fonts/font/NanumGothic.svg#NanumGothic") format("svg");
+    font-weight: normal; font-style: normal; }
+
+
+
+html, body {color:#666; font:14p font-family: 'malgun gothic','Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic; min-width:320px;}
+h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic;}
+.clients .client-image{ width:160px;}
+
+
+.banner{min-height: 400px !important;}
+.banner p{font-size: 16px; line-height: 140%;}
+.page-title{font-family: 'malgun gothic'; font-size: 40px;}
+.banner h2 {font-size: 40px; padding-top: 40px;}
+.banner h2 span{font-size: 30px;}
+
+
+
+.bbs-title{font-size: 30px;}
+.blogpost { margin: 0;}
+.blogpost footer{font-size:15px;}
+
+.post-info{text-align: right;}
+.social-links {margin-top: 10px;}
+.social-links li{margin: 0 5px;}
+.blogpost .blogpost-content{padding-bottom:40px;}
+.blogpost .blogpost-content img{margin: auto; margin-bottom: 20px;}
+
+@media (max-width: 1199px)
+    .full-width-section:not(.no-image) .full-text-container.light-gray-bg {
+        background:none;
+        color: #000000;
+        border-top: none;
+        border-bottom: none;
+        width: 100%;
+}
+
+.full-text-container{position: relative;}
+@media (max-width: 991px)
+    .full-width-section:not(.no-image) .full-text-container {
+        top: 0;
+        height: 100%;
+        padding: 0;
+}
+
+
+@media (max-width:767px){
+    body{font-size: 14px;}
+    .page-title{font-family: 'malgun gothic'; font-size: 30px;}
+    .bbs-title{font-size: 25px;}
+    .pv-40{ padding: 20px 0px !important;}
+    .full-text-container {padding: 0 !important;}
+    .banner h2 {font-size: 20px; padding-top: 40px;}
+    .banner h2 span{font-size:20px;}
+    .banner p{font-size: 14px;}
+    .text-right{ text-align: left;}
+    .separator-3{}
+    h3{font-size: 20px;}
+    .image-box .body {padding: 15px 0px;}
+    .social-links{text-align: center; width: 100%;}
+    .social-links li{display: inline-block; float: none;}
+    .link{text-align: center; float: none !important;}
+    .main-container{padding-bottom: 0;}
+    .left_btn_line{display: none;}
+}
+
+.clients .client-image{margin: 20px 10px; height: auto;}
+.transparent-header .header:not(.dark) .site-slogan{color: #888;}
+.site-slogan{display: none !important;}
+.header-left{padding:3px 0 0 0;}
+@media (max-width: 767px){
+    .transparent-header .header-left{padding:0 !important;}
+}
+.fixed-header-on .header .logo img {
+    max-height: 48px;
+}
+
+
+.banner.parallax, .banner.light-translucent-bg, .banner.dark-translucent-bg, .banner.default-translucent-bg{min-height:340px;text-shadow:1px 1px 2px rgba(0,0,0,0.3)}
+.dark-translucent-bg:after{background-color:rgba(0,0,0,0.1)}
+.banner.dark-translucent-bg h2{font-size:40px;font-weight:bold}
+.banner.dark-translucent-bg p{font-size:20px}
+.story-box {margin-top:30px}
+.story-box .body{padding-left:30px}
+.story-box .body.text-right{padding-right:30px}
+@media (max-width: 991px) {
+  .story-box .body{padding-left:0}
+}
+
+
+.header{background-color: #fff;}
+.isotope-container-fitrows img{width: 100%;}
+
+.ci-img{text-align:center}
+.ci-img img{display:inline-block}
+.ci-color{width:25%;float:left}
+.ci-color .cir{display:inline-block;width:20px;height:20px;background-color:#f0652c;vertical-align:middle;position:relative;top:5px;border-radius:50%}
+.ci-color .cir.cir2{background-color:#5d9029}
+.ci-color .cir.cir3{background-color:#6da938}
+.ci-color .cir.cir4{background-color:#6886c6}
+.ci-color .cir.cir5{background-color:#506c9e}
+.ci-color .cir.cir6{background-color:#010028}
+.ci-color .cir.cir7{background-color:#86878c}
+.ci-color h3{display:inline-block;padding-left:10px;vertical-align:middle;font-size:16px}
+

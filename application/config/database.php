@@ -80,13 +80,34 @@ $query_builder = TRUE;
  *	테이블을 찾을수 없으므로 재설치해주셔야 합니다
  * 'dsn'	=> 'mysql:host=localhost;dbname=yourdatabasenamehere',
  * 위 부분에서 yourdatabasenamehere 이 부분을 실제 디비명으로 변경해주세요
+ $db['default'] = array(
+	//'dsn'	=> 'mysql:host=localhost;dbname=yourdatabasenamehere',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => 'webcms',
+	'database' => 'gaon',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => 'cb_',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
 */
 $db['default'] = array(
 	//'dsn'	=> 'mysql:host=localhost;dbname=yourdatabasenamehere',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'hostname' => 'uws64-032.cafe24.com',
+	'username' => 'gaonn0509',
+	'password' => 'soyi1214@@',
+	'database' => 'gaonn0509',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => 'cb_',
 	'pconnect' => FALSE,
