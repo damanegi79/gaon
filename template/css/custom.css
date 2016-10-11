@@ -95,6 +95,7 @@ h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum 
 
 .banner.parallax, .banner.light-translucent-bg, .banner.dark-translucent-bg, .banner.default-translucent-bg{min-height:340px;text-shadow:1px 1px 2px rgba(0,0,0,0.3)}
 .dark-translucent-bg:after{background-color:rgba(0,0,0,0.1)}
+.dark-translucent-bg.product:after{background-color:rgba(0,0,0,0.2)}
 .banner.dark-translucent-bg h2{font-size:40px;font-weight:bold}
 .banner.dark-translucent-bg p{font-size:20px}
 .story-box {margin-top:30px}
