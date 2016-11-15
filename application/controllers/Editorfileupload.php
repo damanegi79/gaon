@@ -134,6 +134,89 @@ class Editorfileupload extends CB_Controller
 
 
     /**
+     * contentbuilder를 통해 이미지를 업로드하는 컨트롤러입니다.
+     */
+    public function contentbuilder()
+    {
+        // 이벤트 라이브러리를 로딩합니다
+        $eventname = 'event_editorfileupload_contentbuilder';
+        $this->load->event($eventname);
+
+        // 이벤트가 존재하면 실행합니다
+        Events::trigger('before', $eventname);
+
+        $this->_init();
+
+        $mem_id = (int) $this->member->item('mem_id');
+
+        $upload_path = config_item('uploads_dir') . '/editor/' . cdate('Y') . '/' . cdate('m') . '/';
+
+        $temp_file_path = tempnam(sys_get_temp_dir(), 'temp_image');
+        $img = $_POST['imageData'];
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+       
+        $fileData = base64_decode($img);
+        file_put_contents($temp_file_path, $fileData);
+        $img_info = getimagesize($temp_file_path); 
+        $_FILES['userfile'] = array(
+            'name' => uniqid().'.'.preg_replace('!\w+/!', '', $img_info['mime']),
+            'tmp_name' => $temp_file_path,
+            'size'  => filesize($temp_file_path),
+            'error' => UPLOAD_ERR_OK,
+            'type'  => $img_info['mime'],
+        );
+
+        $uploadconfig = array(
+            'upload_path' => $upload_path,
+            'allowed_types' => 'jpg|jpeg|png|gif',
+            'max_size' => 10 * 10000,
+            'encrypt_name' => true,
+        );
+        
+        $this->upload->initialize($uploadconfig);
+
+        if ($this->upload->do_upload('userfile', true)) {
+            // 이벤트가 존재하면 실행합니다
+            Events::trigger('doupload', $eventname);
+
+            $filedata = $this->upload->data();
+            $fileupdate = array(
+                'mem_id' => $mem_id,
+                'eim_originname' => element('orig_name', $filedata),
+                'eim_filename' => cdate('Y') . '/' . cdate('m') . '/' . element('file_name', $filedata),
+                'eim_filesize' => intval(element('file_size', $filedata) * 1024),
+                'eim_width' => element('image_width', $filedata) ? element('image_width', $filedata) : 0,
+                'eim_height' => element('image_height', $filedata) ? element('image_height', $filedata) : 0,
+                'eim_type' => str_replace('.', '', element('file_ext', $filedata)),
+                'eim_datetime' => cdate('Y-m-d H:i:s'),
+                'eim_ip' => $this->input->ip_address(),
+            );
+            $this->Editor_image_model->insert($fileupdate);
+            $image_url = site_url(config_item('uploads_dir') . '/editor/' . cdate('Y') . '/' . cdate('m') . '/' . element('file_name', $filedata));
+
+            // 이벤트가 존재하면 실행합니다
+            Events::trigger('doupload_after', $eventname);
+
+            list($width, $height) = getimagesize( $filename );
+
+            $response = array(
+                'status' => 'success',
+                'url' => $image_url,
+                'width' => $width,
+                'height' => $height
+            );
+            
+        } else {
+            $response = array(
+                'status' => 'error',
+                'message' => $this->upload->display_errors()
+            );
+        }
+        print json_encode($response);
+    }
+
+    /**
      * CK 에디터를 통해 이미지를 업로드하는 컨트롤러입니다.
      */
     public function ckeditor()
@@ -154,7 +237,6 @@ class Editorfileupload extends CB_Controller
         $uploadconfig = array(
             'upload_path' => $upload_path,
             'allowed_types' => 'jpg|jpeg|png|gif',
-            'max_size' => 10 * 1024,
             'encrypt_name' => true,
         );
 
@@ -199,6 +281,7 @@ class Editorfileupload extends CB_Controller
                 echo $this->upload->display_errors();
             }
         }
+        
     }
 
 

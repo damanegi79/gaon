@@ -17,7 +17,16 @@ var ContentBuilder = ContentBuilder || (function ()
     */
     var BlockEvent ={
         BLOCK_COPY : "blockCopy",
-        BLOCK_DELETE : "blockDelete"
+        BLOCK_DELETE : "blockDelete",
+        IMAGE_OVER   : "imageOver",
+        IMAGE_OUT   : "imageOut"
+    }
+
+    /*
+    *  이미지에디터 이벤트
+    */
+    var ImageEditorEvent ={
+        ENTER : "enter",
     }
 
 
@@ -27,6 +36,152 @@ var ContentBuilder = ContentBuilder || (function ()
     var tempCategory = [{name:"Default", id:0},{name:"All", id:-1},{name:"Title", id:1},{name:"Title, Subtitle", id:2},{name:"Info, Title", id:3},{name:"Heading, Paragraph", id:5},{name:"Paragraph", id:6},{name:"Buttons", id:33},{name:"Cards", id:34},{name:"Images + Caption", id:9},{name:"Images", id:11},{name:"Single Image", id:12},{name:"Call to Action", id:13},{name:"List", id:14},{name:"Quotes", id:15},{name:"Profile", id:16},{name:"Map", id:17},{name:"Video", id:20},{name:"Social", id:18},{name:"Services", id:21},{name:"Contact Info", id:22},{name:"Pricing", id:23},{name:"Team Profile", id:24},{name:"Products/Portfolio", id:25},{name:"How It Works", id:26},{name:"Partners/Clients", id:27},{name:"As Featured On", id:28},{name:"Achievements", id:29},{name:"Skills", id:32},{name:"Coming Soon", id:30},{name:"Page Not Found", id:31},{name:"Separator", id:19}];
 
 
+    /*
+    *  ImageEditor 클래스
+    */
+    this.ImageEditor = EventDispatcher.extend(
+    {
+        container   : null,
+        toolBar     : null,
+        imgMask     : null,
+        targetImage : null,
+        startLeft   : 0,
+        startTop    : 0,
+        addScale    : 1,
+        
+
+
+        init : function ( container )
+        {
+            this.container = container;
+            this.toolBar = this.container.find(".editor_tool");
+            this.imgMask = this.container.find(".img_mask");
+            this.setToolBar();
+        },
+
+        reset : function ()
+        {
+             this.container.hide();
+        },
+
+        setToolBar : function ()
+        {
+            var owner = this;
+            
+            this.toolBar.find(".minus_btn").bind("click", function ( e )
+            {
+                if(owner.addScale > 1)
+                {
+                    owner.addScale -= 0.1;
+                    var scale = parseInt(parseInt(owner.targetImage.attr("min-width")) * owner.addScale);
+                    owner.targetImage.css({width:scale});
+                    owner.moveImage(owner.targetImage.position().top, owner.targetImage.position().left);
+                }
+                
+            });
+            this.toolBar.find(".plus_btn").bind("click", function ( e )
+            {
+                
+                if(owner.addScale < 2)
+                {
+                    owner.addScale += 0.1;
+                    var scale = parseInt(parseInt(owner.targetImage.attr("min-width")) * owner.addScale);
+                    owner.targetImage.css({width:scale});
+                    owner.moveImage();
+                    console.log("!@!@@");
+                }
+                
+            });
+
+            this.toolBar.find(".cancel_btn").bind("click", function ( e )
+            {
+
+            });
+
+            this.toolBar.find(".enter_btn").bind("click", function ( e )
+            {
+                 var canvas = owner.cropImage(owner.targetImage, owner.targetImage.parent().width(), owner.targetImage.parent().height());
+                 owner.dispatchEvent({type:ImageEditorEvent.ENTER, vars:{canvas:canvas}});
+                 owner.reset();
+            });
+
+            this.toolBar.find(".no_crop_btn").bind("click", function ( e )
+            {
+                owner.reset();
+            });
+        },
+
+        show : function ( imgTarget, imgPath )
+        {
+            this.imgMask.css({width:imgTarget.width(), height:imgTarget.height(), top:imgTarget.offset().top, left:imgTarget.offset().left});
+            this.targetImage = $('<img src="'+imgPath+'" alt="" style="position:relative;top:0;left:0;height:auto;max-width:none" />');
+            this.targetImage.bind("load", function (e)
+            {
+                $(this).attr("org-width", $(this)[0].width).attr("org-height", $(this)[0].height).attr("min-width", imgTarget.width()).css({"width":imgTarget.width()});
+            });
+            this.imgMask.empty().append(this.targetImage);
+            this.toolBar.css({top:imgTarget.offset().top-40, left:imgTarget.offset().left})
+            this.container.show();
+            this.dragImage();
+            
+        }, 
+        dragImage : function ()
+        {
+            var owner = this;
+            owner.imgMask.unbind("mousedown", downImageMask);
+            owner.imgMask.bind("mousedown", downImageMask);
+
+            function downImageMask( e )
+            {
+                owner.startLeft = e.pageX-owner.targetImage.position().left;
+                owner.startTop  = e.pageY-owner.targetImage.position().top;
+                $(window).bind("mousemove", moveImageMask);
+                $(window).bind("mouseup", upImageMask);
+                e.preventDefault();
+            }
+
+            function moveImageMask( e )
+            {
+                var left = e.pageX - owner.startLeft;
+                var top = e.pageY - owner.startTop;
+                owner.moveImage(top, left);
+                e.preventDefault();
+            }
+
+            function upImageMask( e )
+            {
+                $(window).unbind("mousemove", moveImageMask);
+                $(window).unbind("mouseup", upImageMask);
+            }
+        },
+        moveImage : function(top, left)
+        {
+            var owner = this;
+            var maxTop = owner.imgMask.height() - owner.targetImage.height();
+            if(maxTop>0)maxTop = 0;
+            if(top > 0) top = 0;
+            if(top < maxTop) top = maxTop;
+
+            var maxLeft = owner.imgMask.width() - owner.targetImage.width();
+            if(maxLeft>0)maxLeft = 0;
+            if(left > 0) left = 0;
+            if(left < maxLeft) left = maxLeft;
+
+            owner.targetImage.css({left:left, top:top});
+        },
+        
+        cropImage : function ( img, width, height )
+        {
+            var orgWidth = parseInt(img.attr("org-width"));
+            var per = orgWidth /img.width();
+            var canvas = $('<canvas width="'+width+'" height="'+height+'" style="position:relative;z-index:9999">');
+            $("body").append(canvas);
+            var context = canvas[0].getContext('2d');
+            context.drawImage(img[0], Math.abs(img.position().left)*per, Math.abs(img.position().top)*per, width*per, height*per, 0, 0, width, height);
+            return canvas;
+        }
+
+    });
 
     
     /*
@@ -48,6 +203,7 @@ var ContentBuilder = ContentBuilder || (function ()
             this.id = id;
             this.createTool();
             this.initEvent();
+            this.setImage();
         },
 
         // 제거 
@@ -77,6 +233,7 @@ var ContentBuilder = ContentBuilder || (function ()
                 owner.tool.css({display:"none"});
                 owner.isFocus = false;
             });
+            
         },
 
         //툴바 생성
@@ -111,6 +268,25 @@ var ContentBuilder = ContentBuilder || (function ()
             owner.tool.find(".add").bind("click", function ( e )
             {   
                 owner.dispatchEvent({type:BlockEvent.BLOCK_COPY, vars:{target:owner}});
+            });
+        },
+
+        //이미지처리
+        setImage : function ()
+        {
+            var owner = this;
+
+            owner.block.find("img").each(function ( i )
+            {
+                $(this).bind("mouseenter", function (e)
+                {
+                    owner.dispatchEvent({type:BlockEvent.IMAGE_OVER, vars:{target:$(this)}});
+                });
+
+                $(this).bind("mouseleave", function (e)
+                {
+                    owner.dispatchEvent({type:BlockEvent.IMAGE_OUT, vars:{target:$(this)}});
+                });
             });
         }
 
@@ -237,7 +413,7 @@ var ContentBuilder = ContentBuilder || (function ()
                     return area;
                 }
             }
-            return null;
+            return null
         }
 
     });
@@ -257,14 +433,15 @@ var ContentBuilder = ContentBuilder || (function ()
         contentBlocks : [],
         contentCount  : 0,
         deleteModal   : null,
+        imageTool     : null,
+        imageEditor   : null,
+        targetImage   : null,
 
 
         // init
         init : function ( containerID, option )
         {
             this.container = $(containerID);
-            
-
 
             var pattern = /tempFile/;
 
@@ -283,6 +460,8 @@ var ContentBuilder = ContentBuilder || (function ()
             owner.initDragger();
             owner.initContentBlock();
             owner.createTempTool();
+            owner.createImageEditor();
+            owner.createImageTool();
 
             // 드래그 생성
             
@@ -450,6 +629,19 @@ var ContentBuilder = ContentBuilder || (function ()
                    owner.deleteContentBlock(e.vars.target);
                 });
 
+                contentBlock.addEventListener(BlockEvent.IMAGE_OVER, function ( e )
+                {
+                    var imgTarget = e.vars.target;
+                    owner.imageTool.css({top:imgTarget.offset().top+(imgTarget.height()/2)-25, left:imgTarget.offset().left+(imgTarget.width()/2)});
+                    owner.imageTool.show();
+                    owner.targetImage = imgTarget;
+                });
+
+                contentBlock.addEventListener(BlockEvent.IMAGE_OUT, function ( e )
+                {
+                    owner.imageTool.hide();
+                });
+
                 owner.contentBlocks.push( contentBlock );
                 owner.contentCount++;
                 owner.dragger.setDraggable();
@@ -606,6 +798,103 @@ var ContentBuilder = ContentBuilder || (function ()
                 {
                     $(this).css({display:"inline-block"});
                 }
+            });
+        },
+
+        // 이미지에디터 생성
+        createImageEditor : function ()
+        {
+            var owner = this;
+            var imageEdiorHtml = '<div class="img_editor">\
+                                        <div class="img_mask">\
+                                        </div>\
+                                        <div class="editor_tool">\
+                                            <button class="btn btn-sm btn-default minus_btn"><i class="fa fa-minus"></i></button>\
+                                            <button class="btn btn-sm btn-default plus_btn"><i class="fa fa-plus"></i></button>\
+                                            <button class="btn btn-sm btn-danger cancel_btn"><i class="fa fa-ban"></i> 취소</button>\
+                                            <button class="btn btn-sm btn-primary enter_btn"><i class="fa fa-check"></i> 확인</button>\
+                                            <button class="btn btn-sm btn-success no_crop_btn"><i class="fa fa-check"></i> 편집없이 적용</button>\
+                                        </div>\
+                                  </div>';
+
+            var imgEditor = $(imageEdiorHtml);
+            owner.imageEditor = new ImageEditor(imgEditor);
+            owner.container.append(imgEditor);
+            owner.imageEditor.addEventListener(ImageEditorEvent.ENTER, function ( e )
+            {
+                //owner.targetImage.parent().empty().append(e.vars.obj);
+                owner.uploadImage(e.vars.canvas);
+            });
+        },
+
+        // 이미지툴바 생성
+        createImageTool : function ()
+        {
+            var owner = this;
+            var imageToolHtml = '<div class="img_tool">\
+                                    <span class="upload_btn"><input id="imgUploadFile" name="userfile" type="file"></span>\
+                                    <button type="button" class="link_btn"></button>\
+                                  </div>';
+
+            owner.imageTool = $(imageToolHtml);
+            owner.container.append(owner.imageTool);
+
+            owner.imageTool.bind("mouseover", function (e)
+            {
+                $(this).show();
+            });
+
+            owner.imageTool.bind("mouseout", function (e)
+            {
+                $(this).hide();
+            });
+
+            owner.imageTool.find("input[type='file']").bind("change", function ( e )
+            {
+                var file = $(this)[0].files[0];
+                var reader = new FileReader();
+                if (file) 
+                {
+                    reader.readAsDataURL(file);
+                }
+
+                reader.addEventListener("load", function ()
+                {
+                    owner.imageEditor.show(owner.targetImage, reader.result);
+                });
+
+                //owner.uploadImage();
+            });
+        },
+
+        // 이미지 업로드
+        uploadImage : function (canvas)
+        {
+            var owner = this;
+            var dataURL = canvas[0].toDataURL();
+           
+
+            $.ajax({
+                type : "POST",
+                url  : "/editorfileupload/contentbuilder",
+                data : {
+                    imageData : dataURL,
+                    csrf_test_name : cb_csrf_hash 
+                }
+            })
+            .done(function (data)
+            {
+                console.log(data);
+                var result = $.parseJSON(data);
+                if(result.status == "success")
+                {
+                    owner.targetImage.attr("src", result.url);
+                }
+                else
+                {
+                    alert("파일업로드 에러");
+                }
+                canvas.remove();
             });
         },
 
