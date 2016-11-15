@@ -173,7 +173,7 @@
 
             <!-- banner start -->
             <!-- ================ -->
-            <div class="banner dark-translucent-bg" style="background-image:url('images/top_visual2.jpg'); background-position: 50% 5%; background-size:cover;">
+            <div class="banner dark-translucent-bg" style="background-image:url('images/layout/visual_gaonn.jpg'); background-position: 50% 50%; background-size:cover;">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 pv-20">
@@ -195,39 +195,87 @@
                         <!-- main start -->
                         <!-- ================ -->
                         <div class="main col-md-12">
-
-                            <!-- page-title start -->
-                            <!-- ================ -->
-                            <h1 class="page-title text-center">LABOVO STORY</h1>
+                            <h1 class="page-title text-center">NOTICE</h1>
                             <div class="separator"></div>
-                            <!-- page-title end -->
-                            <p class="large text-center pv-20" style="max-width:980px;margin:0 auto">“0세부터 100세까지의 건강한 먹거리” 를 추구하는,  생애주기 헬스케어 데이터 기반의
-                                먹거리로  유아 및 아동 친환경 제품 생산에 주력하는  친 자연적인 이미지를  내포
-                            </p>
-                            <div class="image-box story-box space-top style-4">
-                                <div class="row grid-space-0">
-                                    <div class="col-md-6">
-                                        <div class="overlay-container">
-                                            <img src="images/labovo_visual1.png" alt="" style="width:100%;">
+
+                            <div class="row bbs-top">
+                                <div class="col-md-2">
+                                    <select class="input form-control" style="margin-top:10px">
+                                        <option value="">정렬하기</option>
+                                        <option value="post_datetime desc">날짜순</option>
+                                        <option value="post_hit desc">조회수</option>
+                                        <option value="post_comment_count desc">댓글수</option>
+                                        <option value="post_like desc">추천순</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-10">
+                                    <form class="navbar-form navbar-right pull-right" action="">
+                                    <div class="form-group">
+                                        <select class="input pull-left form-control" style="width:100px">
+                                            <option value="post_both">제목+내용</option>
+                                            <option value="post_title">제목</option>
+                                            <option value="post_content">내용</option>
+                                        </select>
+                                        <div class="input-group" style="padding-left:10px">
+                                            <input type="text" class="form-control" placeholder="검색">
+                                            <span class="input-group-btn">
+                                                <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-dark" style="margin:0;padding:9px 10px"><i class="fa fa-search"></i></button>
+                                            </span>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="pv-30 visible-lg"></div>
-                                        <div class="body">
-                                            <div class="visible-lg"></div>
-                                            <h3>Gaon_N 의  공식 브랜드 <strong>“Lab OVO” 라보보</strong> </h3>
-                                            <div class="separator-2"></div>
-                                            <p class="margin-clear">“0세부터 100세까지의 건강한 먹거리” 를 추구하는,  생애주기 헬스케어 데이터 기반의
-                                                먹거리로  유아 및 아동 친환경 제품 생산에 주력하는  친 자연적인 이미지를  내포</p>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
+                            
+                            <div class="bbs-list">
+                                <ul>
+                                    <li class="list-header">
+                                        <span class="no">No.</span>
+                                        <span class="title">Title</span>
+                                        <span class="date">Date</span>
+                                    </li>
+                                    <li class="list-body">
+                                        <span class="no">5</span>
+                                        <span class="title"><a href="bbs_view.html">당내 경선 경쟁자였던 버리 샌더스의 지지층을 끌어</a></span>
+                                        <span class="date">2016-01-01</span>
+                                    </li>
+                                    <li class="list-body">
+                                        <span class="no">4</span>
+                                        <span class="title"><a href="bbs_view.html">당내 경선 경쟁자였던 버리 샌더스의 지지층을 끌어</a></span>
+                                        <span class="date">2016-01-01</span>
+                                    </li>
+                                    <li class="list-body">
+                                        <span class="no">3</span>
+                                        <span class="title"><a href="bbs_view.html">당내 경선 경쟁자였던 버리 샌더스의 지지층을 끌어</a></span>
+                                        <span class="date">2016-01-01</span>
+                                    </li>
+                                    <li class="list-body">
+                                        <span class="no">2</span>
+                                        <span class="title"><a href="bbs_view.html">당내 경선 경쟁자였던 버리 샌더스의 지지층을 끌어</a></span>
+                                        <span class="date">2016-01-01</span>
+                                    </li>
+                                    <li class="list-body">
+                                        <span class="no">1</span>
+                                        <span class="title"><a href="bbs_view.html">당내 경선 경쟁자였던 버리 샌더스의 지지층을 끌어</a></span>
+                                        <span class="date">2016-01-01</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <nav class="text-center">
+                                <ul class="pagination">
+                                    <li class="active"><a>1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                </ul>
+                            </nav>
+
                         </div>
                         <!-- main end -->
 
                     </div>
                 </div>
+
             </section>
             <!-- main-container end -->
 

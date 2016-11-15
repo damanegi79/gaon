@@ -121,3 +121,29 @@ h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum 
 .ci-color .cir.cir7{background-color:#86878c}
 .ci-color h3{display:inline-block;padding-left:10px;vertical-align:middle;font-size:16px}
 
+
+.bbs-list{position:relative;margin-top:20px}
+.bbs-list ul{list-style:none;padding:0;width:100%}
+.bbs-list li{width:100%;display:table}
+.bbs-list li span{border-bottom:solid 1px #d7d3d1;padding:20px 10px;min-height:62px;display:table-cell;vertical-align:middle}
+.bbs-list li .no{width:10%;text-align:center}
+.bbs-list li .title{width:80%;padding-left:20px}
+.bbs-list li .title a{color:#000}
+.bbs-list li.list-header{border-top:solid 1px #d7d3d1;color:#000;font-weight:bold;}
+.bbs-list li.list-header .title{text-align:center}
+.bbs-list li .date{width:10%;text-align:center}
+.bbs-top{margin-top:50px}
+
+@media (max-width: 990px){
+   .bbs-list li .no{display:none}
+   .bbs-list li .title{width:70%}
+   .bbs-list li .date{width:30%}
+   .bbs-list li.list-header .title{text-align:left}
+   .bbs-top{margin-top:20px}
+}
+
+.pagination li a{border-radius:0 !important;background-color:#fff !important; color:#777777 !important;}
+.pagination li a i{font-size:18px}
+.pagination li a:hover{background-color:#3697d9 !important;color:#fff !important}
+.pagination li.active a{background-color:#3697d9 !important;color:#fff !important}
+
