@@ -159,7 +159,9 @@ img{display: inline-block;}
 @media (max-width: 640px){
    .tp-caption.sfb > span{display:block;line-height:2em}
 }
-.footer-content li{padding:0;list-style:none}
+.footer-content{color:#bdbdbd}
+.footer-content li{padding:0;list-style:none;overflow:hidden;text-overflow:ellipsis;white-space: nowrap}
+.footer-content li a{color:#bdbdbd}
 .logo img{max-width:70px}
 
 

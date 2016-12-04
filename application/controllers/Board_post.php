@@ -531,10 +531,12 @@ class Board_post extends CB_Controller
 
             $view['view']['extra_content'] = $extra_content;
         }
+        $show_list_from_view = false;
+        /*
         $show_list_from_view = ($this->cbconfig->get_device_view_type() === 'mobile')
             ? element('mobile_show_list_from_view', $board)
             : element('show_list_from_view', $board);
-
+            */
         $board['headercontent'] = ($this->cbconfig->get_device_view_type() === 'mobile')
             ? element('mobile_header_content', $board)
             : element('header_content', $board);

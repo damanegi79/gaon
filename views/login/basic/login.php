@@ -18,21 +18,21 @@
                         echo form_open(current_full_url(), $attributes);
                     ?>
                         <div class="form-group has-feedback">
-                            <label for="inputUserName" class="col-sm-3 control-label"><?php echo element('userid_label_text', $view);?></label>
-                            <div class="col-sm-8">
+                            <label for="inputUserName" class="col-sm-4 control-label"><?php echo element('userid_label_text', $view);?></label>
+                            <div class="col-sm-7">
                                 <input type="text" id="inputUserName" name="mem_userid" class="form-control" value="<?php echo set_value('mem_userid'); ?>" accesskey="L" />
                                 <i class="fa fa-user form-control-feedback"></i>
                             </div>
                         </div>
                         <div class="form-group has-feedback">
-                            <label for="inputPassword" class="col-sm-3 control-label">비밀번호</label>
-                            <div class="col-sm-8">
+                            <label for="inputPassword" class="col-sm-4 control-label">비밀번호</label>
+                            <div class="col-sm-7">
                                 <input type="password" name="mem_password" class="form-control" id="inputPassword">
                                 <i class="fa fa-lock form-control-feedback"></i>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-8">                                											
+                            <div class="col-sm-offset-4 col-sm-7">                                											
                                 <button type="submit" class="btn btn-group btn-default btn-animated">로그인 <i class="fa fa-user"></i></button>
                                 <div class="checkbox" style="display:inline-block;margin-left:10px;vertical-align:top;position:relative;top:10px">
                                     <label for="autologin">
@@ -40,7 +40,7 @@
                                     </label>
                                 </div>
                                 <ul class="space-top">
-                                    <!--<li><a href="<?php echo site_url('register'); ?>">회원가입</a></li>-->
+                                    <li><a href="<?php echo site_url('register'); ?>">회원가입</a></li>
                                     <li><a href="<?php echo site_url('findaccount'); ?>">아이디 / 비밀번호를 잃어 버렸습니까?</a></li>
                                 </ul>
                             </div>

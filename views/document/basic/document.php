@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="/plugin/contentbuilder/contentBuilder.css" />
 <?php
 //print_r($layout);
 //print_r($view);

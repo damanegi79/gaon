@@ -5,10 +5,11 @@
 //print_r($layout);
 //print_r($view);
 ?>
-
+<section class="main-container border-clear light-gray-bg">
 <div class="container">
     <div class="board">
-        
+        <h1 class="page-title text-center"><?php echo html_escape(element('board_name', element('board', element('list', $view)))); ?></h1>
+        <div class="separator"></div>
         <div class="table-top row">
             <div class="col-md-2" style="padding:10px">
             <?php if ( ! element('access_list', element('board', element('list', $view))) && element('use_rss_feed', element('board', element('list', $view)))) { ?>
@@ -136,6 +137,7 @@
         echo form_open('', $attributes);
         ?>
 
+            
 
             <?php if(element('list', element('data', element('list', $view)))) : ?>
                 <?php
@@ -143,52 +145,25 @@
                     $boardCount = 0;
                     $boardLength = count($boardList); 
                 ?>
-                <?php foreach ($boardList as $result) : ?>
-                    
-                    <article class="blogpost">
-                        <div class="row grid-space-10">
-                            <div class="col-md-3">
-                                <div class="overlay-container">
-                                    <img src="<?php echo element('thumb_url', $result); ?>" alt="<?php echo html_escape(element('title', $result)); ?>" title="<?php echo html_escape(element('title', $result)); ?>" style="width:100%;height:auto" />
-                                    <a class="overlay-link" href="<?php echo element('post_url', $result); ?>"><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <header>
-                                    <h2>
-                                        <a href="<?php echo element('post_url', $result); ?>"><?php echo html_escape(element('title', $result)); ?></a>
-                                        <?php if (element('post_file', $result)) { ?><span class="fa fa-download" style="font-size:18px"></span><?php } ?>
-                                        <?php if (element('post_secret', $result)) { ?><span class="fa fa-lock" style="font-size:18px"></span><?php } ?>
-                                        <?php if (element('is_hot', $result)) { ?><span class="label label-danger">Hot</span><?php } ?>
-                                        <?php if (element('is_new', $result)) { ?><span class="label label-warning">New</span><?php } ?>
-                                    </h2>
-                                    <div class="post-info">
-                                        <span class="post-date">
-                                            <i class="icon-calendar"></i>
-                                            <?php echo html_escape(element('post_updated_datetime', $result)); ?>
-                                        </span>
-                                        <span class="submitted"><i class="icon-user-1"></i> <?php echo element('display_name', $result); ?></span>
-                                        <span class="comments">
-                                        <i class="icon-chat"></i>
-                                        <?php if (element('post_comment_count', $result)) { ?>
-                                            <?php echo element('post_comment_count', $result); ?>
-                                        <?php }else{ ?>
-                                            0
-                                        <?php } ?>
-                                        </span>
-                                    </div>
-                                </header>
-                                <div class="blogpost-content">
-                                    <p><?php echo mb_strimwidth(strip_tags(element('post_content', $result)), 0, 390, '...', 'utf-8'); ?></p>
-                                </div>
-                            </div>
-                        </div>
-                        <?php if($boardCount < $boardLength-1) : ?>
-                            <footer class="clearfix"></footer>
-                        <?php endif; ?>
-                    </article>
-                    <?php $boardCount++; ?>
-                <?php endforeach; ?>
+                <div class="bbs-list">
+                    <ul>
+                        <li class="list-header">
+                            <?php if (element('is_admin', $view)) { ?><span class="check"><input onclick="if (this.checked) all_boardlist_checked(true); else all_boardlist_checked(false);" type="checkbox" /></span><?php } ?>
+                            <span class="no">No.</span>
+                            <span class="title">Title</span>
+                            <span class="date">Date</span>
+                        </li>
+                    <?php foreach ($boardList as $result) : ?>
+                        <li class="list-body">
+                            <?php if (element('is_admin', $view)) { ?><span class="check"><input type="checkbox" name="chk_post_id[]" value="<?php echo element('post_id', $result); ?>" /></span><?php } ?>
+                            <span class="no"><?php echo element('num', $result); ?></span>
+                            <span class="title"><a href="<?php echo element('post_url', $result); ?>"><?php echo html_escape(element('title', $result)); ?></a></span>
+                            <span class="date"><?php echo element('display_datetime', $result); ?></span>
+                        </li>
+                        <?php $boardCount++; ?>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
             <?php endif; ?>
 
             <?php if ( ! element('notice_list', element('list', $view)) && ! element('list', element('data', element('list', $view)))): ?>
@@ -198,92 +173,6 @@
                     </div>
                 </article>
             <?php endif ?> 
-
-
-
-
-
-
-
-
-            <!--
-            <table class="table">
-                <thead>
-                    <tr>
-                        <?php if (element('is_admin', $view)) { ?><th><input onclick="if (this.checked) all_boardlist_checked(true); else all_boardlist_checked(false);" type="checkbox" /></th><?php } ?>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>글쓴이</th>
-                        <th>날짜</th>
-                        <th>조회수</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-                if (element('notice_list', element('list', $view))) {
-                    foreach (element('notice_list', element('list', $view)) as $result) {
-                ?>
-                    <tr>
-                        <?php if (element('is_admin', $view)) { ?><th scope="row"><input type="checkbox" name="chk_post_id[]" value="<?php echo element('post_id', $result); ?>" /></th><?php } ?>
-                        <td><span class="label label-primary">공지</span></td>
-                        <td>
-                            <?php if (element('post_reply', $result)) { ?><span class="label label-primary" style="margin-left:<?php echo strlen(element('post_reply', $result)) * 10; ?>px">Re</span><?php } ?>
-                            <a href="<?php echo element('post_url', $result); ?>" style="
-                                <?php
-                                if (element('post_id', element('post', $view)) === element('post_id', $result)) {
-                                    echo 'font-weight:bold;';
-                                }
-                                ?>
-                            " title="<?php echo html_escape(element('title', $result)); ?>"><?php echo html_escape(element('title', $result)); ?></a>
-                            <?php if (element('is_mobile', $result)) { ?><span class="fa fa-wifi"></span><?php } ?>
-                            <?php if (element('post_file', $result)) { ?><span class="fa fa-download"></span><?php } ?>
-                            <?php if (element('post_secret', $result)) { ?><span class="fa fa-lock"></span><?php } ?>
-                            <?php if (element('post_comment_count', $result)) { ?><span class="label label-warning">+<?php echo element('post_comment_count', $result); ?></span><?php } ?>
-                        <td><?php echo element('display_name', $result); ?></td>
-                        <td><?php echo element('display_datetime', $result); ?></td>
-                        <td><?php echo number_format(element('post_hit', $result)); ?></td>
-                    </tr>
-                <?php
-                    }
-                }
-                if (element('list', element('data', element('list', $view)))) {
-                    foreach (element('list', element('data', element('list', $view))) as $result) {
-                ?>
-                    <tr>
-                        <?php if (element('is_admin', $view)) { ?><th scope="row"><input type="checkbox" name="chk_post_id[]" value="<?php echo element('post_id', $result); ?>" /></th><?php } ?>
-                        <td><?php echo element('num', $result); ?></td>
-                        <td>
-                            <?php if (element('category', $result)) { ?><a href="<?php echo board_url(element('brd_key', element('board', element('list', $view)))); ?>?category_id=<?php echo html_escape(element('bca_key', element('category', $result))); ?>"><span class="label label-default"><?php echo html_escape(element('bca_value', element('category', $result))); ?></span></a><?php } ?>
-                            <?php if (element('post_reply', $result)) { ?><span class="label label-primary" style="margin-left:<?php echo strlen(element('post_reply', $result)) * 10; ?>px">Re</span><?php } ?>
-                            <a href="<?php echo element('post_url', $result); ?>" style="
-                                <?php
-                                if (element('post_id', element('post', $view)) === element('post_id', $result)) {
-                                    echo 'font-weight:bold;';
-                                }
-                                ?>
-                            " title="<?php echo html_escape(element('title', $result)); ?>"><?php echo html_escape(element('title', $result)); ?></a>
-                            <?php if (element('is_mobile', $result)) { ?><span class="fa fa-wifi"></span><?php } ?>
-                            <?php if (element('post_file', $result)) { ?><span class="fa fa-download"></span><?php } ?>
-                            <?php if (element('post_secret', $result)) { ?><span class="fa fa-lock"></span><?php } ?>
-                            <?php if (element('is_hot', $result)) { ?><span class="label label-danger">Hot</span><?php } ?>
-                            <?php if (element('is_new', $result)) { ?><span class="label label-warning">New</span><?php } ?>
-                            <?php if (element('post_comment_count', $result)) { ?><span class="label label-warning">+<?php echo element('post_comment_count', $result); ?></span><?php } ?>
-                        <td><?php echo element('display_name', $result); ?></td>
-                        <td><?php echo element('display_datetime', $result); ?></td>
-                        <td><?php echo number_format(element('post_hit', $result)); ?></td>
-                    </tr>
-                <?php
-                    }
-                }
-                if ( ! element('notice_list', element('list', $view)) && ! element('list', element('data', element('list', $view)))) {
-                ?>
-                    <tr>
-                        <td colspan="6" class="nopost">게시물이 없습니다</td>
-                    </tr>
-                <?php } ?>
-                </tbody>
-            </table>
-            -->
         <?php echo form_close(); ?>
         </div>
         <nav class="text-center"><?php echo element('paging', element('list', $view)); ?></nav>
@@ -333,7 +222,7 @@
         
     </div>
 </div>
-
+</section>
 <?php echo element('footercontent', element('board', element('list', $view))); ?>
 
 <?php

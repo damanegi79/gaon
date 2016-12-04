@@ -307,7 +307,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                         </div>
                         <div class="col-md-4">
                             <div class="footer-content">
-                                <h2 class="title">Latest News</h2>
+                                <h2 class="title">Latest Notice</h2>
                                 <div class="separator-2"></div>
                                 <?php
                                 $config = array(
@@ -322,6 +322,9 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                                 );
                                 echo $this->board->latest($config);
                                 ?>
+                                <div class="space-top">
+                                    <a href="/board/b-a-1" class="link-dark"><i class="fa fa-plus-circle pl-5 pr-5"></i>더보기</a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -342,9 +345,9 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                                 -->
                                 <div class="separator-2"></div>
                                 <ul class="list-icons">
-                                    <li><i class="fa fa-phone pr-10 text-default"></i> 02.3444.1958</li>
-                                    <li><i class="fa fa-fax pr-10 text-default"></i> 02.780.8808</li>
-                                    <li><a href="mailto:korea@gaonn.net"><i class="fa fa-envelope-o pr-10"></i>korea@gaonn.net</a></li>
+                                    <li><i class="fa fa-phone pr-10 text-default"></i> <?php echo $this->cbconfig->item('company_phone'); ?></li>
+                                    <li><i class="fa fa-fax pr-10 text-default"></i> <?php echo $this->cbconfig->item('company_fax'); ?></li>
+                                    <li><a href="mailto:korea@gaonn.net"><i class="fa fa-envelope-o pr-10 text-default"></i><?php echo $this->cbconfig->item('company_admin_email'); ?></a></li>
                                 </ul>
                             </div>
                         </div>

@@ -19,307 +19,173 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
 <?php } ?>
 
 <?php echo element('headercontent', element('board', $view)); ?>
-<div class="board">
-    <?php echo show_alert_message($this->session->flashdata('message'), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>'); ?>
-    <h3>
-        <?php if (element('category', element('post', $view))) { ?>[<?php echo html_escape(element('bca_value', element('category', element('post', $view)))); ?>] <?php } ?>
-        <?php echo html_escape(element('post_title', element('post', $view))); ?>
-    </h3>
-    <ul class="information mb20">
-        <li><?php echo element('display_name', element('post', $view)); ?></li>
-        <li><i class="fa fa-comments"></i> <?php echo number_format(element('post_comment_count', element('post', $view))); ?></li>
-        <li><i class="fa fa-eye"></i> <?php echo number_format(element('post_hit', element('post', $view))); ?></li>
-        <?php if (element('use_post_like', element('board', $view))) { ?>
-            <li><i class="fa fa-thumbs-up"></i> <span class="post-like"><?php echo number_format(element('post_like', element('post', $view))); ?></span></li>
-        <?php } ?>
-        <?php    if (element('use_post_dislike', element('board', $view))) { ?>
-            <li><i class="fa fa-thumbs-down"></i> <span class="post-dislike"><?php echo number_format(element('post_dislike', element('post', $view))); ?></span></li>
-        <?php    } ?>
-        <?php if (element('use_print', element('board', $view))) { ?>
-            <li><a href="javascript:;" id="btn-print" onClick="post_print('<?php echo element('post_id', element('post', $view)); ?>', 'post-print');" title="이 글을 프린트하기"><i class="fa fa-print"></i> <span class="post-print">Print</span></a></li>
-        <?php } ?>
-        <li class="copy_post_url" data-clipboard-text="<?php echo element('short_url', $view); ?>"><span><i class="fa fa-link"></i> 글주소</span></li>
-        <?php if (element('show_url_qrcode', element('board', $view))) { ?>
-            <li class="url-qrcode"  data-qrcode-url="<?php echo urlencode(element('short_url', $view)); ?>"><i class="fa fa-qrcode"></i></li>
-        <?php } ?>
-        <li class="pull-right time"><i class="fa fa-clock-o"></i> <?php echo element('display_datetime', element('post', $view)); ?></li>
-        <?php if (element('display_ip', element('post', $view))) { ?>
-            <li class="pull-right time"><i class="fa fa-map-marker"></i> <?php echo element('display_ip', element('post', $view)); ?></li>
-        <?php } ?>
-        <?php if (element('is_mobile', element('post', $view))) { ?>
-            <li class="pull-right time"><i class="fa fa-wifi"></i></li>
-        <?php } ?>
-    </ul>
-    <?php if (element('link_count', $view) > 0 OR element('file_download_count', $view) > 0) { ?>
-        <div class="table-box">
-            <table class="table-body">
-                <tbody>
-                <?php
-                if (element('file_download_count', $view) > 0) {
-                    foreach (element('file_download', $view) as $key => $value) {
-                ?>
-                    <tr>
-                        <td><i class="fa fa-download"></i> <a href="javascript:file_download('<?php echo element('download_link', $value); ?>')"><?php echo html_escape(element('pfi_originname', $value)); ?>(<?php echo byte_format(element('pfi_filesize', $value)); ?>)</a> <span class="time"><i class="fa fa-clock-o"></i> <?php echo display_datetime(element('pfi_datetime', $value), 'full'); ?></span><span class="badge"><?php echo number_format(element('pfi_download', $value)); ?></span></td>
-                    </tr>
-                <?php
-                    }
-                }
-                if (element('link_count', $view) > 0) {
-                    foreach (element('link', $view) as $key => $value) {
-                ?>
-                    <tr>
-                        <td><i class="fa fa-link"></i> <a href="<?php echo element('link_link', $value); ?>" target="_blank"><?php echo html_escape(element('pln_url', $value)); ?></a><span class="badge"><?php echo number_format(element('pln_hit', $value)); ?></span>
-                            <?php if (element('show_url_qrcode', element('board', $view))) { ?>
-                                <span class="url-qrcode"  data-qrcode-url="<?php echo urlencode(element('pln_url', $value)); ?>"><i class="fa fa-qrcode"></i></span>
-                            <?php } ?>
-                        </td>
-                    </tr>
-                <?php
-                    }
-                }
-                ?>
-                </tbody>
-            </table>
+<section class="main-container border-clear light-gray-bg">
+<div class="container">
+    <div class="board">
+        <?php echo show_alert_message($this->session->flashdata('message'), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>'); ?>
+        <h1 class="bbs-title">
+            <?php if (element('category', element('post', $view))) { ?>[<?php echo html_escape(element('bca_value', element('category', element('post', $view)))); ?>] <?php } ?>
+            <?php echo html_escape(element('post_title', element('post', $view))); ?>
+        </h1>
+        <div class="separator-2"></div>
+        
+        <div class="post-info fR">
+            <span class="post-date">
+                <i class="icon-calendar"></i>
+                <?php echo element('post_datetime', element('post', $view)); ?>
+            </span>
         </div>
-    <?php } ?>
+       
 
-    <script type="text/javascript">
-    //<![CDATA[
-    function file_download(link) {
-        <?php if (element('point_filedownload', element('board', $view)) < 0) { ?>if ( ! confirm("파일을 다운로드 하시면 포인트가 차감(<?php echo number_format(element('point_filedownload', element('board', $view))); ?>점)됩니다.\n\n포인트는 게시물당 한번만 차감되며 다음에 다시 다운로드 하셔도 중복하여 차감하지 않습니다.\n\n그래도 다운로드 하시겠습니까?")) { return; }<?php }?>
-        document.location.href = link;
-    }
-    //]]>
-    </script>
-
-    <?php if (element('extra_content', $view)) { ?>
-        <div class="table-box">
-            <table class="table-body">
-                <tbody>
-                    <?php foreach (element('extra_content', $view) as $key => $value) { ?>
-                        <tr>
-                            <th class="px150"><?php echo html_escape(element('display_name', $value)); ?></th>
-                            <td><?php echo nl2br(html_escape(element('output', $value))); ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
-    <?php } ?>
-    <div class="contents-view">
-        <div class="contents-view-img">
-        <?php
-        if (element('file_image', $view)) {
-            foreach (element('file_image', $view) as $key => $value) {
-        ?>
-            <img src="<?php echo element('thumb_image_url', $value); ?>" alt="<?php echo html_escape(element('pfi_originname', $value)); ?>" title="<?php echo html_escape(element('pfi_originname', $value)); ?>" class="view_full_image" data-origin-image-url="<?php echo element('origin_image_url', $value); ?>" style="max-width:100%;" />
-        <?php
-            }
+        <script type="text/javascript">
+        //<![CDATA[
+        function file_download(link) {
+            <?php if (element('point_filedownload', element('board', $view)) < 0) { ?>if ( ! confirm("파일을 다운로드 하시면 포인트가 차감(<?php echo number_format(element('point_filedownload', element('board', $view))); ?>점)됩니다.\n\n포인트는 게시물당 한번만 차감되며 다음에 다시 다운로드 하셔도 중복하여 차감하지 않습니다.\n\n그래도 다운로드 하시겠습니까?")) { return; }<?php }?>
+            document.location.href = link;
         }
-        ?>
-        </div>
+        //]]>
+        </script>
 
-        <!-- 본문 내용 시작 -->
-        <div id="post-content"><?php echo element('content', element('post', $view)); ?></div>
-        <!-- 본문 내용 끝 -->
-    </div>
-
-    <?php if ( ! element('post_del', element('post', $view)) && (element('use_post_like', element('board', $view)) OR element('use_post_dislike', element('board', $view)))) { ?>
-        <div class="recommand">
-            <?php if (element('use_post_like', element('board', $view))) { ?>
-                <a class="good" href="javascript:;" id="btn-post-like" onClick="post_like('<?php echo element('post_id', element('post', $view)); ?>', '1', 'post-like');" title="추천하기"><span class="post-like"><?php echo number_format(element('post_like', element('post', $view))); ?></span><br /><i class="fa fa-thumbs-o-up fa-lg"></i></a>
-            <?php } ?>
-            <?php if (element('use_post_dislike', element('board', $view))) { ?>
-                <a class="bad" href="javascript:;" id="btn-post-dislike" onClick="post_like('<?php echo element('post_id', element('post', $view)); ?>', '2', 'post-dislike');" title="비추하기"><span class="post-dislike"><?php echo number_format(element('post_dislike', element('post', $view))); ?></span><br /><i class="fa fa-thumbs-o-down fa-lg"></i></a>
-            <?php } ?>
-        </div>
-    <?php } ?>
-
-    <div class="pull-right mt20 mb20">
-        <?php if ( ! element('post_del', element('post', $view)) && element('use_scrap', element('board', $view))) { ?>
-            <button type="button" class="btn btn-black" id="btn-scrap" onClick="post_scrap('<?php echo element('post_id', element('post', $view)); ?>', 'post-scrap');">스크랩 <span class="post-scrap"><?php echo element('scrap_count', element('post', $view)) ? '+' . number_format(element('scrap_count', element('post', $view))) : ''; ?></span></button>
-        <?php } ?>
-        <?php if ( ! element('post_del', element('post', $view)) && element('use_blame', element('board', $view)) && ( ! element('blame_blind_count', element('board', $view)) OR element('post_blame', element('post', $view)) < element('blame_blind_count', element('board', $view)))) { ?>
-            <button type="button" class="btn btn-black" id="btn-blame" onClick="post_blame('<?php echo element('post_id', element('post', $view)); ?>', 'post-blame');">신고 <span class="post-blame"><?php echo element('post_blame', element('post', $view)) ? '+' . number_format(element('post_blame', element('post', $view))) : ''; ?></span></button>
-        <?php } ?>
-
-        <?php if ( ! element('post_del', element('post', $view)) && element('is_admin', $view)) { ?>
-            <button type="button" class="btn btn-default btn-sm admin-manage-post"><i class="fa fa-cog big-fa"></i>관리</button>
-            <div class="btn-admin-manage-layer admin-manage-post-layer">
-                <?php if (element('is_admin', $view) === 'super') { ?>
-                    <div class="item" onClick="post_copy('copy', '<?php echo element('post_id', element('post', $view)); ?>');"><i class="fa fa-files-o"></i> 복사하기</div>
-                    <div class="item" onClick="post_copy('move', '<?php echo element('post_id', element('post', $view)); ?>');"><i class="fa fa-arrow-right"></i> 이동하기</div>
-                    <?php if (element('use_category', element('board', $view))) { ?>
-                        <div class="item" onClick="post_change_category('<?php echo element('post_id', element('post', $view)); ?>');"><i class="fa fa-tags"></i> 카테고리변경</div>
-                <?php
-                    }
-                }
-                if (element('use_post_secret', element('board', $view))) {
-                    if (element('post_secret', element('post', $view))) {
-                ?>
-                    <div class="item" onClick="post_action('post_secret', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-unlock"></i> 비밀글해제</div>
-                <?php } else { ?>
-                    <div class="item" onClick="post_action('post_secret', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-lock"></i> 비밀글로</div>
-                <?php
-                    }
-                }
-                if (element('post_hide_comment', element('post', $view))) {
-                ?>
-                    <div class="item" onClick="post_action('post_hide_comment', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-comments"></i> 댓글감춤해제</div>
-                <?php } else { ?>
-                    <div class="item" onClick="post_action('post_hide_comment', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-comments"></i> 댓글감춤</div>
-                <?php } ?>
-                <?php if (element('post_notice', element('post', $view))) { ?>
-                    <div class="item" onClick="post_action('post_notice', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-bullhorn"></i> 공지내림</div>
-                <?php } else { ?>
-                    <div class="item" onClick="post_action('post_notice', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-bullhorn"></i> 공지올림</div>
-                <?php } ?>
-                <?php if (element('post_blame', element('post', $view)) >= element('blame_blind_count', element('board', $view))) { ?>
-                    <div class="item" onClick="post_action('post_blame_blind', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-exclamation-circle"></i> 블라인드해제</div>
-                <?php } else { ?>
-                    <div class="item" onClick="post_action('post_blame_blind', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-exclamation-circle"></i> 블라인드처리</div>
-                <?php } ?>
-                <div class="item" onClick="post_action('post_trash', '<?php echo element('post_id', element('post', $view)); ?>', '', '이 글을 휴지통으로 이동하시겠습니까?');"><i class="fa fa-trash"></i> 휴지통으로</div>
+        <?php if (element('extra_content', $view)) { ?>
+            <div class="table-box">
+                <table class="table-body">
+                    <tbody>
+                        <?php foreach (element('extra_content', $view) as $key => $value) { ?>
+                            <tr>
+                                <th class="px150"><?php echo html_escape(element('display_name', $value)); ?></th>
+                                <td><?php echo nl2br(html_escape(element('output', $value))); ?></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
         <?php } ?>
-    </div>
-
-    <?php
-    if (element('use_sns_button', $view)) {
-        $this->managelayout->add_js(base_url('assets/js/sns.js'));
-
-        if ($this->cbconfig->item('kakao_apikey')) {
-            $this->managelayout->add_js('https://developers.kakao.com/sdk/js/kakao.min.js');
-    ?>
-        <script type="text/javascript">Kakao.init('<?php echo $this->cbconfig->item('kakao_apikey'); ?>');</script>
-        <?php } ?>
-        <div class="sns_button">
-            <a href="javascript:;" onClick="sendSns('facebook', '<?php echo element('short_url', $view); ?>', '<?php echo html_escape(element('post_title', element('post', $view)));?>');" title="이 글을 페이스북으로 퍼가기"><img src="<?php echo element('view_skin_url', $layout); ?>/images/social_facebook.png" width="22" height="22" alt="이 글을 페이스북으로 퍼가기" title="이 글을 페이스북으로 퍼가기" /></a>
-            <a href="javascript:;" onClick="sendSns('twitter', '<?php echo element('short_url', $view); ?>', '<?php echo html_escape(element('post_title', element('post', $view)));?>');" title="이 글을 트위터로 퍼가기"><img src="<?php echo element('view_skin_url', $layout); ?>/images/social_twitter.png" width="22" height="22" alt="이 글을 트위터로 퍼가기" title="이 글을 트위터로 퍼가기" /></a>
-            <?php if ($this->cbconfig->item('kakao_apikey')) { ?>
-                <a href="javascript:;" onClick="kakaolink_send('<?php echo html_escape(element('post_title', element('post', $view)));?>', '<?php echo element('short_url', $view); ?>');" title="이 글을 카카오톡으로 퍼가기"><img src="<?php echo element('view_skin_url', $layout); ?>/images/social_kakaotalk.png" width="22" height="22" alt="이 글을 카카오톡으로 퍼가기" title="이 글을 카카오톡으로 퍼가기" /></a>
-            <?php } ?>
-            <a href="javascript:;" onClick="sendSns('kakaostory', '<?php echo element('short_url', $view); ?>', '<?php echo html_escape(element('post_title', element('post', $view)));?>');" title="이 글을 카카오스토리로 퍼가기"><img src="<?php echo element('view_skin_url', $layout); ?>/images/social_kakaostory.png" width="22" height="22" alt="이 글을 카카오스토리로 퍼가기" title="이 글을 카카오스토리로 퍼가기" /></a>
-            <a href="javascript:;" onClick="sendSns('band', '<?php echo element('short_url', $view); ?>', '<?php echo html_escape(element('post_title', element('post', $view)));?>');" title="이 글을 밴드로 퍼가기"><img src="<?php echo element('view_skin_url', $layout); ?>/images/social_band.png" width="22" height="22" alt="이 글을 밴드로 퍼가기" title="이 글을 밴드로 퍼가기" /></a>
-        </div>
-    <?php } ?>
-
-    <div class="clearfix"></div>
-
-    <?php
-    if ( ! element('post_hide_comment', element('post', $view))) {
-    ?>
-        <div id="viewcomment"></div>
-    <?php
-        $this->load->view(element('view_skin_path', $layout) . '/comment_write');
-    }
-    ?>
-
-    <div class="border_button mt20 mb20">
-        <div class="btn-group pull-left" role="group" aria-label="...">
-            <?php if (element('modify_url', $view)) { ?>
-                <a href="<?php echo element('modify_url', $view); ?>" class="btn btn-default btn-sm">수정</a>
-            <?php } ?>
-            <?php    if (element('delete_url', $view)) { ?>
-                <button type="button" class="btn btn-default btn-sm btn-one-delete" data-one-delete-url="<?php echo element('delete_url', $view); ?>">삭제</button>
-            <?php } ?>
-            <a href="<?php echo element('list_url', $view); ?>" class="btn btn-default btn-sm">목록</a>
-            <?php if (element('search_list_url', $view)) { ?>
-                <a href="<?php echo element('search_list_url', $view); ?>" class="btn btn-default btn-sm">검색목록</a>
-            <?php } ?>
-            <?php if (element('reply_url', $view)) { ?>
-                <a href="<?php echo element('reply_url', $view); ?>" class="btn btn-default btn-sm">답변</a>
-            <?php } ?>
-            <?php if (element('prev_post', $view)) { ?>
-                <a href="<?php echo element('url', element('prev_post', $view)); ?>" class="btn btn-default btn-sm">이전글</a>
-            <?php } ?>
-            <?php if (element('next_post', $view)) { ?>
-                <a href="<?php echo element('url', element('next_post', $view)); ?>" class="btn btn-default btn-sm">다음글</a>
-            <?php } ?>
-        </div>
-        <?php if (element('write_url', $view)) { ?>
-            <div class="pull-right">
-                <a href="<?php echo element('write_url', $view); ?>" class="btn btn-success btn-sm">글쓰기</a>
-            </div>
-        <?php } ?>
-    </div>
-</div>
-
-
-
-
-
-
-
- <!-- main-container start -->
-            <!-- ================ -->
-            <section class="main-container border-clear light-gray-bg ">
-                <div class="container">
-                    <div class="row">
-
-                        <!-- main start -->
-                        <!-- ================ -->
-                        <div class="main col-md-12">
-                            <h1 class="bbs-title">지역·연령 따라 선호 에어컨이 다르다…왜?</h1>
-
-                            <div class="separator-2"></div>
-                            <div class="post-info fR">
-                                <span class="post-date">
-                                    <i class="icon-calendar"></i>
-                                    <span class="month">2016년 08월</span>
-                                    <span class="day">12일</span>
-                                </span>
-                                <span class="submitted"><i class="icon-user-1"></i> 관리자</span>
-                            </div>
-                            <section class="full-width-section pv-40">
-                                <article class="blogpost object-non-visible" data-animation-effect="fadeInUp" data-effect-delay="100">
-                                    <div class="blogpost-content">
-                                        <p><img src="/images/layout/bbs_photo.jpg" alt=""></p>
-                                        <p class="large pv-20">(주) 가온앤 은 검증된 BT 역량과 PHR data 획득을 포함한 맞춤형 헬스케어 IT 솔루션 개발 역량, 성공적 Medical Business Consulting 경험을 바탕으로 신규 Medical & Healthcare 사업 및 B2B & B2C 사업역량을 확장하고자 하는 고객에게 최상의 서비스와 플랫폼을 개발, 제공 하는 기업입니다.</p>
-                                        `지역과 연령에 따라 선호하는 에어컨이 다르다?` <br><br>
-
-                                        올해 국내 에어컨 시장 최고 히트작은 단연 삼성전자 `무풍에어컨`이다. 무풍에어컨은 유통업계 추산으로 에어컨 시장 점유율이 60~70%에 달한다. 하지만 전국에서 무풍에어컨이 다 인기를 얻는 것은 아니다. <br>소비자가 거주하는 지역과 성향에 따라 인기 제품 판도가 다른 것으로 나타났다.<br><br>
-
-                                        31일 업계에 따르면 서울·수도권에서는 무풍에어컨이, 지방에서는 휘센 듀얼 에어컨이 더 인기를 얻고 있다. 소비자 연령별로 보면 20대부터 40대까지 소비자는 무풍에어컨을 선호하고, 50대 이상 고연령층에서는 LG 휘센 듀얼 에어컨을 선호하는 것으로 나타났다.<br><br>
-
-                                        무풍에어컨은 삼성전자가 올해 출시한 혁신제품이다. 찬바람이 직접 몸에 닿지 않으면서도 시원함을 유지하는 무풍냉방 기능이 핵심이다. 송풍구를 3도 기울여 포물선 회오리 바람이 나오게 해 강력냉방으로 실내 온도를 급격히 낮춘다. 이후에는 에어컨 전면 `메탈쿨링 패널`에 적용된 약 13만5000개 `마이크로 홀(미세 구멍)`을 통해 냉기를 내뿜어 온도를 유지한다.
-                                    </div>
-                                    <footer class="clearfix object-non-visible" data-animation-effect="fadeInUp" data-effect-delay="100">
-                                        <div class="link pull-left left_btn_line">
-                                            <a href="#" class="btn btn-default-transparent">이전</a>
-                                            <a href="#" class="btn btn-default-transparent">다음</a>
-                                        </div>
-                                        <div class="link pull-right">
-                                            <a href="#" class="btn btn-default-transparent">글쓰기</a>
-                                            <a href="#" class="btn btn-default-transparent">수정</a>
-                                            <a href="#" class="btn btn-default">목록</a>
-                                        </div>
-<!--
-
-                                        <ul class="social-links circle colored clearfix animated-effect-1 pull-left">
-                                            <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
-                                            <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
-                                            <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-                                        </ul>
--->
-
-                                    </footer>
-                                </article>
-                            </section>
-
-                        </div>
-                        <!-- main end -->
-
-                    </div>
-                </div>
-
-            </section>
-            <!-- main-container end -->
+        <section class="full-width-section pv-40">
+        <article class="blogpost">
+        <div class="blogpost-content">
+            
+            <?php
+            if (element('file_image', $view)) {
+                foreach (element('file_image', $view) as $key => $value) {
+            ?>
+                <img src="<?php echo element('thumb_image_url', $value); ?>" alt="<?php echo html_escape(element('pfi_originname', $value)); ?>" title="<?php echo html_escape(element('pfi_originname', $value)); ?>" class="view_full_image" data-origin-image-url="<?php echo element('origin_image_url', $value); ?>" style="max-width:100%;" />
+            <?php
+                }
+            }
+            ?>
 
             
+            <div id="post-content"><?php echo element('content', element('post', $view)); ?></div>
+            
+        </div>
+        </article>
+        </section>
 
+        <?php if ( ! element('post_del', element('post', $view)) && (element('use_post_like', element('board', $view)) OR element('use_post_dislike', element('board', $view)))) { ?>
+            <div class="recommand">
+                <?php if (element('use_post_like', element('board', $view))) { ?>
+                    <a class="good" href="javascript:;" id="btn-post-like" onClick="post_like('<?php echo element('post_id', element('post', $view)); ?>', '1', 'post-like');" title="추천하기"><span class="post-like"><?php echo number_format(element('post_like', element('post', $view))); ?></span><br /><i class="fa fa-thumbs-o-up fa-lg"></i></a>
+                <?php } ?>
+                <?php if (element('use_post_dislike', element('board', $view))) { ?>
+                    <a class="bad" href="javascript:;" id="btn-post-dislike" onClick="post_like('<?php echo element('post_id', element('post', $view)); ?>', '2', 'post-dislike');" title="비추하기"><span class="post-dislike"><?php echo number_format(element('post_dislike', element('post', $view))); ?></span><br /><i class="fa fa-thumbs-o-down fa-lg"></i></a>
+                <?php } ?>
+            </div>
+        <?php } ?>
 
+        <div class="pull-right mt20 mb20">
+            <?php if ( ! element('post_del', element('post', $view)) && element('use_scrap', element('board', $view))) { ?>
+                <button type="button" class="btn btn-black" id="btn-scrap" onClick="post_scrap('<?php echo element('post_id', element('post', $view)); ?>', 'post-scrap');">스크랩 <span class="post-scrap"><?php echo element('scrap_count', element('post', $view)) ? '+' . number_format(element('scrap_count', element('post', $view))) : ''; ?></span></button>
+            <?php } ?>
+            <?php if ( ! element('post_del', element('post', $view)) && element('use_blame', element('board', $view)) && ( ! element('blame_blind_count', element('board', $view)) OR element('post_blame', element('post', $view)) < element('blame_blind_count', element('board', $view)))) { ?>
+                <button type="button" class="btn btn-black" id="btn-blame" onClick="post_blame('<?php echo element('post_id', element('post', $view)); ?>', 'post-blame');">신고 <span class="post-blame"><?php echo element('post_blame', element('post', $view)) ? '+' . number_format(element('post_blame', element('post', $view))) : ''; ?></span></button>
+            <?php } ?>
 
+            <?php if ( ! element('post_del', element('post', $view)) && element('is_admin', $view)) { ?>
+                <button type="button" class="btn btn-default btn-sm admin-manage-post"><i class="fa fa-cog big-fa"></i>관리</button>
+                <div class="btn-admin-manage-layer admin-manage-post-layer">
+                    <?php if (element('is_admin', $view) === 'super') { ?>
+                        <div class="item" onClick="post_copy('copy', '<?php echo element('post_id', element('post', $view)); ?>');"><i class="fa fa-files-o"></i> 복사하기</div>
+                        <div class="item" onClick="post_copy('move', '<?php echo element('post_id', element('post', $view)); ?>');"><i class="fa fa-arrow-right"></i> 이동하기</div>
+                        <?php if (element('use_category', element('board', $view))) { ?>
+                            <div class="item" onClick="post_change_category('<?php echo element('post_id', element('post', $view)); ?>');"><i class="fa fa-tags"></i> 카테고리변경</div>
+                    <?php
+                        }
+                    }
+                    if (element('use_post_secret', element('board', $view))) {
+                        if (element('post_secret', element('post', $view))) {
+                    ?>
+                        <div class="item" onClick="post_action('post_secret', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-unlock"></i> 비밀글해제</div>
+                    <?php } else { ?>
+                        <div class="item" onClick="post_action('post_secret', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-lock"></i> 비밀글로</div>
+                    <?php
+                        }
+                    }
+                    if (element('post_hide_comment', element('post', $view))) {
+                    ?>
+                        <div class="item" onClick="post_action('post_hide_comment', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-comments"></i> 댓글감춤해제</div>
+                    <?php } else { ?>
+                        <div class="item" onClick="post_action('post_hide_comment', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-comments"></i> 댓글감춤</div>
+                    <?php } ?>
+                    <?php if (element('post_notice', element('post', $view))) { ?>
+                        <div class="item" onClick="post_action('post_notice', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-bullhorn"></i> 공지내림</div>
+                    <?php } else { ?>
+                        <div class="item" onClick="post_action('post_notice', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-bullhorn"></i> 공지올림</div>
+                    <?php } ?>
+                    <?php if (element('post_blame', element('post', $view)) >= element('blame_blind_count', element('board', $view))) { ?>
+                        <div class="item" onClick="post_action('post_blame_blind', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-exclamation-circle"></i> 블라인드해제</div>
+                    <?php } else { ?>
+                        <div class="item" onClick="post_action('post_blame_blind', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-exclamation-circle"></i> 블라인드처리</div>
+                    <?php } ?>
+                    <div class="item" onClick="post_action('post_trash', '<?php echo element('post_id', element('post', $view)); ?>', '', '이 글을 휴지통으로 이동하시겠습니까?');"><i class="fa fa-trash"></i> 휴지통으로</div>
+                </div>
+            <?php } ?>
+        </div>
+
+        <?php
+        if (element('use_sns_button', $view)) {
+            $this->managelayout->add_js(base_url('assets/js/sns.js'));
+
+            if ($this->cbconfig->item('kakao_apikey')) {
+                $this->managelayout->add_js('https://developers.kakao.com/sdk/js/kakao.min.js');
+        ?>
+            <script type="text/javascript">Kakao.init('<?php echo $this->cbconfig->item('kakao_apikey'); ?>');</script>
+            <?php } ?>
+            <div class="sns_button">
+                <a href="javascript:;" onClick="sendSns('facebook', '<?php echo element('short_url', $view); ?>', '<?php echo html_escape(element('post_title', element('post', $view)));?>');" title="이 글을 페이스북으로 퍼가기"><img src="<?php echo element('view_skin_url', $layout); ?>/images/social_facebook.png" width="22" height="22" alt="이 글을 페이스북으로 퍼가기" title="이 글을 페이스북으로 퍼가기" /></a>
+                <a href="javascript:;" onClick="sendSns('twitter', '<?php echo element('short_url', $view); ?>', '<?php echo html_escape(element('post_title', element('post', $view)));?>');" title="이 글을 트위터로 퍼가기"><img src="<?php echo element('view_skin_url', $layout); ?>/images/social_twitter.png" width="22" height="22" alt="이 글을 트위터로 퍼가기" title="이 글을 트위터로 퍼가기" /></a>
+                <?php if ($this->cbconfig->item('kakao_apikey')) { ?>
+                    <a href="javascript:;" onClick="kakaolink_send('<?php echo html_escape(element('post_title', element('post', $view)));?>', '<?php echo element('short_url', $view); ?>');" title="이 글을 카카오톡으로 퍼가기"><img src="<?php echo element('view_skin_url', $layout); ?>/images/social_kakaotalk.png" width="22" height="22" alt="이 글을 카카오톡으로 퍼가기" title="이 글을 카카오톡으로 퍼가기" /></a>
+                <?php } ?>
+                <a href="javascript:;" onClick="sendSns('kakaostory', '<?php echo element('short_url', $view); ?>', '<?php echo html_escape(element('post_title', element('post', $view)));?>');" title="이 글을 카카오스토리로 퍼가기"><img src="<?php echo element('view_skin_url', $layout); ?>/images/social_kakaostory.png" width="22" height="22" alt="이 글을 카카오스토리로 퍼가기" title="이 글을 카카오스토리로 퍼가기" /></a>
+                <a href="javascript:;" onClick="sendSns('band', '<?php echo element('short_url', $view); ?>', '<?php echo html_escape(element('post_title', element('post', $view)));?>');" title="이 글을 밴드로 퍼가기"><img src="<?php echo element('view_skin_url', $layout); ?>/images/social_band.png" width="22" height="22" alt="이 글을 밴드로 퍼가기" title="이 글을 밴드로 퍼가기" /></a>
+            </div>
+        <?php } ?>
+        <div class="border_button mt20 mb20">
+            <div class="btn-group pull-left" role="group" aria-label="...">
+                <?php if (element('modify_url', $view)) { ?>
+                    <a href="<?php echo element('modify_url', $view); ?>" class="btn btn-default btn-sm">수정</a>
+                <?php } ?>
+                <?php    if (element('delete_url', $view)) { ?>
+                    <button type="button" class="btn btn-default btn-sm btn-one-delete" data-one-delete-url="<?php echo element('delete_url', $view); ?>">삭제</button>
+                <?php } ?>
+                <a href="<?php echo element('list_url', $view); ?>" class="btn btn-default btn-sm">목록</a>
+                <?php if (element('search_list_url', $view)) { ?>
+                    <a href="<?php echo element('search_list_url', $view); ?>" class="btn btn-default btn-sm">검색목록</a>
+                <?php } ?>
+                <?php if (element('reply_url', $view)) { ?>
+                    <a href="<?php echo element('reply_url', $view); ?>" class="btn btn-default btn-sm">답변</a>
+                <?php } ?>
+                <?php if (element('prev_post', $view)) { ?>
+                    <a href="<?php echo element('url', element('prev_post', $view)); ?>" class="btn btn-default btn-sm">이전글</a>
+                <?php } ?>
+                <?php if (element('next_post', $view)) { ?>
+                    <a href="<?php echo element('url', element('next_post', $view)); ?>" class="btn btn-default btn-sm">다음글</a>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
 
 <?php echo element('footercontent', element('board', $view)); ?>
 
