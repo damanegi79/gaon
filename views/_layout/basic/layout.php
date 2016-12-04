@@ -174,7 +174,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                                                             if (element(element('men_id', $mval), $menu)) {
                                                                 $mlink = element('men_link', $mval) ? element('men_link', $mval) : 'javascript:;';
                                                                 $menuhtml .= '<li class="dropdown">
-                                                                <a href="' . $mlink . '" ' . element('men_custom', $mval);
+                                                                <a class="dropdown-toggle" data-toggle="dropdown" href="' . $mlink . '" ' . element('men_custom', $mval);
                                                                 if (element('men_target', $mval)) {
                                                                     $menuhtml .= ' target="' . element('men_target', $mval) . '"';
                                                                 }

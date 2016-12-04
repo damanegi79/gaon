@@ -22,7 +22,8 @@ File Description: Place here your custom CSS styles
 
 html, body {color:#666; font:14p font-family: 'malgun gothic','Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic; min-width:320px;}
 h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic;}
-.clients .client-image{ width:160px;border:solid 1px #ccc;margin: 20px 10px;margin: 20px 10px; height: auto;box-sizing: border-box;background-color:#fff}
+.clients .client-image{ width:160px;margin: 20px 10px;margin: 20px 10px; height: auto;box-sizing: border-box;background-color:#fff}
+.clients .client-image img{border:solid 1px #ccc}
 @media (max-width: 990px){
     .clients {text-align:center}
    .clients .client-image{width:43%}
@@ -75,13 +76,11 @@ img{display: inline-block;}
     .banner h2 span{font-size:20px;}
     .banner p{font-size: 14px;}
     .text-right{ text-align: left;}
-    .separator-3{}
     h3{font-size: 20px;}
     .image-box .body {padding: 15px 0px;}
     .social-links{text-align: center; width: 100%;}
     .social-links li{display: inline-block; float: none;}
     .link{text-align: center; float: none !important;}
-    .main-container{padding-bottom: 0;}
     .left_btn_line{display: none;}
 }
 
@@ -166,3 +165,13 @@ img{display: inline-block;}
 
 
 .clients-container{text-align:left;max-width:1110px;margin:0 auto}
+
+@media (max-width: 767px){
+   .transparent-header .main-navigation .navbar.navbar-default{position:relative;height:0;min-height:auto;margin:0;border:none}
+   .main-navigation .container-fluid{padding:0}
+   .navbar-default .navbar-collapse, .navbar-default .navbar-form{background-color:#fff;margin-top:7px}
+   .logo{position:relative;z-index:9}
+   .navbar-default .navbar-toggle{position:absolute;top:-55px;right:-15px}
+   .navbar-default .navbar-collapse, .navbar-default .navbar-form{margin-top:2px}
+   .logo img{padding:10px 0;height:60px}
+}

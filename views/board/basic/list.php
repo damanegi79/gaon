@@ -5,7 +5,7 @@
 //print_r($layout);
 //print_r($view);
 ?>
-<section class="main-container border-clear light-gray-bg">
+<section class="main-container border-clear">
 <div class="container">
     <div class="board">
         <h1 class="page-title text-center"><?php echo html_escape(element('board_name', element('board', element('list', $view)))); ?></h1>
