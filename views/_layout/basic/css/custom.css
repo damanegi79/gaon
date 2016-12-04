@@ -22,8 +22,12 @@ File Description: Place here your custom CSS styles
 
 html, body {color:#666; font:14p font-family: 'malgun gothic','Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic; min-width:320px;}
 h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum Gothic','dotum','Gulim',sans-serif,Arial,Helvetica,Clean,AppleGothic;}
-.clients .client-image{ width:160px;}
-
+.clients .client-image{ width:160px;border:solid 1px #ccc;margin: 20px 10px;margin: 20px 10px; height: auto;box-sizing: border-box;background-color:#fff}
+@media (max-width: 990px){
+    .clients {text-align:center}
+   .clients .client-image{width:43%}
+}
+img{display: inline-block;}
 
 .banner{min-height: 400px !important;}
 .banner p{font-size: 16px; line-height: 140%;}
@@ -81,7 +85,7 @@ h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum 
     .left_btn_line{display: none;}
 }
 
-.clients .client-image{margin: 20px 10px; height: auto;}
+
 .transparent-header .header:not(.dark) .site-slogan{color: #888;}
 .site-slogan{display: none !important;}
 .header-left{padding:3px 0 0 0;}
@@ -107,7 +111,8 @@ h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum 
 
 
 .header{background-color: #fff;}
-.isotope-container-fitrows img{width: 100%;}
+.isotope-container-fitrows .overlay-container{background-color:#fff}
+.isotope-container-fitrows img{width: 70%;margin:0 auto}
 
 .ci-img{text-align:center}
 .ci-img img{display:inline-block}
@@ -146,4 +151,16 @@ h1, h2, h3, h4, h5, h6, .navbar .navbar-nav{font-family: 'malgun gothic','Nanum 
 .pagination li a i{font-size:18px}
 .pagination li a:hover{background-color:#3697d9 !important;color:#fff !important}
 .pagination li.active a{background-color:#3697d9 !important;color:#fff !important}
+.tp-caption.sfb{font-size:60px !important;font-weight:bold}
+@media (max-width: 990px){
+   .tp-caption.sfb{font-size:40px !important}
+}
 
+@media (max-width: 640px){
+   .tp-caption.sfb > span{display:block;line-height:2em}
+}
+.footer-content li{padding:0;list-style:none}
+.logo img{max-width:70px}
+
+
+.clients-container{text-align:left;max-width:1110px;margin:0 auto}

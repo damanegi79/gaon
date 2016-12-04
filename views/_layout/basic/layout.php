@@ -263,8 +263,8 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                     <div class="row">
                         <div class="col-md-4">
                             <div class="footer-content">
-                                <div class="logo-footer"><img id="logo-footer" src="/images/img_logo.png" alt=""></div>
-                                <p>㈜가온앤은 ‘세상의 중심’ 그리고 and, 세상의 중심에서 무한한 발전을 실현 하고자 합니다. <br>
+                                <div class="logo-footer"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/footer_logo.png" style="height:60px" /></div>
+                                <p style="margin-top:10px">㈜가온앤은 ‘세상의 중심’ 그리고 and, 세상의 중심에서 무한한 발전을 실현 하고자 합니다. <br>
                                     생명의 시작부터 노년기까지,인류의 건강한 삶을  위하여 열심히 달리겠습니다.</p>
                                 <div class="separator-2"></div>
                                 <nav>
@@ -311,7 +311,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
                                 <div class="separator-2"></div>
                                 <?php
                                 $config = array(
-                                    'skin' => 'basic',
+                                    'skin' => 'basic2',
                                     'brd_id' => '',
                                     'limit' => 4,
                                     'length' => "",
@@ -389,11 +389,14 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 <script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/plugins/SmoothScroll.js"></script>
 <script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/js/template.js"></script>
 <script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/js/custom.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyBbRvJL0Ebd5nwYPqEASyXq-ksA4tkWJmM"></script>
+<script type="text/javascript" src="<?php echo element('layout_skin_url', $layout); ?>/js/google.map.config.js"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/common.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.extension.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/sideview.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/js.cookie.js'); ?>"></script>
+
 <?php echo $this->managelayout->display_js(); ?>
 
 <script type="text/javascript">

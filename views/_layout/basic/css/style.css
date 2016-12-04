@@ -445,7 +445,7 @@ tbody {
   position: absolute;
   width: 100%;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: rgba(255, 255, 255, 1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   border-top-color: #a0a0a0;
 }
@@ -1024,7 +1024,7 @@ tbody {
 }
 .fixed-header-on .header.fixed:not(.dark) {
   border-bottom: 1px solid #f1f1f1;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 1);
 }
 .transparent-header.gradient-background-header.fixed-header-on .header.fixed:not(.dark) {
   border-bottom: none;
@@ -1515,6 +1515,18 @@ h5 + .separator {
 .pv-40 {
   padding-top: 40px;
   padding-bottom: 40px;
+}
+.pv-50 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.pv-80 {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.pv-100 {
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 .mt-5 {
   margin-top: 5px;
@@ -3985,7 +3997,7 @@ fieldset[disabled] .form-control {
 }
 .shadow:hover:after,
 .shadow-narrow:hover:after {
-  bottom: 10px;
+  /*bottom: 10px;*/
 }
 /*Image box
 ---------------------------------- */
@@ -3993,7 +4005,7 @@ fieldset[disabled] .form-control {
   margin-bottom: 20px;
 }
 .image-box .body {
-  padding: 15px 30px;
+  padding: 15px;
 }
 .image-box .body h3 {
   margin-top: 0;
@@ -6626,7 +6638,7 @@ h6.media-heading {
     width: 100%;
   }
   .full-width-section:not(.no-image) .full-text-container.light-gray-bg {
-
+    background-color: rgba(255, 255, 255, 0.8);
     color: #000000;
     border-top: none;
     border-bottom: none;
@@ -6646,7 +6658,7 @@ h6.media-heading {
   .full-width-section:not(.no-image) .full-text-container {
     top: 0;
     height: 100%;
-    padding: 0 ;
+    padding: 0 20px;
   }
   .full-text-container h1 {
     font-size: 28px;

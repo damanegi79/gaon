@@ -53,9 +53,9 @@ class CB_Pagination extends CI_Pagination
     public $cur_page = 1;
     public $use_page_numbers = true;
     public $first_link = '<span aria-hidden="true">&laquo;</span>';
-    public $next_link = '<span aria-hidden="true">&gt;</span>';
-    public $prev_link = '<span aria-hidden="true">&lt;</span>';
-    public $last_link = '<span aria-hidden="true">&raquo;</span>';
+    public $next_link = '<span aria-hidden="true"><i class="fa fa-angle-double-left"></i></span>';
+    public $prev_link = '<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>';
+    public $last_link = '<span aria-hidden="true"><i class="fa fa-angle-double-right"></i></span>';
     public $first_tag_open = '<li>';
     public $first_tag_close = '</li>';
     public $last_tag_open = '<li>';
